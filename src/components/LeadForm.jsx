@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Pin, Phone, Link } from "lucide-react";
+import { baseUrl } from "../utils/baseUrl";
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
 const courses = [
@@ -80,9 +81,9 @@ const contactInfo = [
 
 const initialData = {
   name: "",
-  mobile: "",
-  course: "",
-  location: "",
+  phone: "",
+  courseName: "",
+  prefferedLocation: "",
   message: "",
 };
 
@@ -96,11 +97,12 @@ const validate = (data) => {
   const errors = {};
   if (!data.name.trim()) errors.name = "Name is required";
   else if (data.name.trim().length < 2) errors.name = "Name is too short";
-  if (!data.mobile.trim()) errors.mobile = "Mobile number is required";
-  else if (!/^[+]?[\d\s-]{8,15}$/.test(data.mobile.trim()))
-    errors.mobile = "Enter a valid mobile number";
-  if (!data.course) errors.course = "Please select a course";
-  if (!data.location) errors.location = "Please select a location";
+  if (!data.phone.trim()) errors.phone = "Mobile number is required";
+  else if (!/^[+]?[\d\s-]{8,15}$/.test(data.phone.trim()))
+    errors.phone = "Enter a valid phone number";
+  if (!data.courseName) errors.courseName = "Please select a course";
+  if (!data.preferredLocation)
+    errors.preferredLocation = "Please select a location";
   return errors;
 };
 
@@ -175,11 +177,14 @@ const LeadForm = () => {
     }
     setStatus("loading");
     try {
-      const response = await fetch("/api/contact", {
+      console.log("Form Data: ", formData);
+      const response = await fetch(`${baseUrl}/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+      console.log("Response: ", response);
+
       if (response.ok) {
         setStatus("success");
         setFormData(initialData);
@@ -327,7 +332,7 @@ const LeadForm = () => {
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                   onClick={() => setStatus("idle")}
-                  className="mt-2 cursor-pointer rounded-full bg-linear-to-r from-[#826955] to-[#fddfbf] px-8 py-3 text-sm font-semibold tracking-wide text-primary shadow-md shadow-amber-400/25 transition-all hover:shadow-lg"
+                  className="mt-2 cursor-pointer rounded-full bg-linear-to-r from-[#826955] to-[#fddfbf] px-8 py-3 text-sm font-semibold tracking-wide text-light shadow-md shadow-amber-400/25 transition-all hover:shadow-lg"
                 >
                   Submit Another Enquiry
                 </motion.button>
@@ -365,16 +370,16 @@ const LeadForm = () => {
 
                   {/* Mobile */}
                   <div className="flex flex-col gap-1.5">
-                    <FieldLabel label="Mobile Number" error={errors.mobile} />
+                    <FieldLabel label="Phone Number" error={errors.phone} />
                     <input
                       type="tel"
-                      name="mobile"
-                      value={formData.mobile}
+                      name="phone"
+                      value={formData.phone}
                       onChange={handleChange}
                       placeholder="+91 00000 00000"
-                      className={inputCls(!!errors.mobile)}
+                      className={inputCls(!!errors.phone)}
                     />
-                    <ErrorMsg error={errors.mobile} />
+                    <ErrorMsg error={errors.phone} />
                   </div>
                 </motion.div>
 
@@ -383,14 +388,19 @@ const LeadForm = () => {
                   variants={itemVariants}
                   className="flex flex-col gap-1.5"
                 >
-                  <FieldLabel label="Interested Course" error={errors.course} />
+                  <FieldLabel
+                    label="Interested Course"
+                    error={errors.courseName}
+                  />
                   <div className="relative">
                     <select
-                      name="course"
-                      value={formData.course}
+                      name="courseName"
+                      value={formData.courseName}
                       onChange={handleChange}
-                      className={`${inputCls(!!errors.course)} cursor-pointer appearance-none pr-10 ${
-                        !formData.course ? "text-secondary" : "text-stone-900"
+                      className={`${inputCls(!!errors.courseName)} cursor-pointer appearance-none pr-10 ${
+                        !formData.courseName
+                          ? "text-secondary"
+                          : "text-stone-900"
                       }`}
                     >
                       <option value="" disabled>
@@ -410,7 +420,7 @@ const LeadForm = () => {
                       ▼
                     </span>
                   </div>
-                  <ErrorMsg error={errors.course} />
+                  <ErrorMsg error={errors.courseName} />
                 </motion.div>
 
                 {/* Location */}
@@ -420,15 +430,17 @@ const LeadForm = () => {
                 >
                   <FieldLabel
                     label="Preferred Location"
-                    error={errors.location}
+                    error={errors.preferredLocation}
                   />
                   <div className="relative">
                     <select
-                      name="location"
-                      value={formData.location}
+                      name="preferredLocation"
+                      value={formData.preferredLocation}
                       onChange={handleChange}
-                      className={`${inputCls(!!errors.location)} cursor-pointer appearance-none pr-10 ${
-                        !formData.location ? "text-secondary" : "text-stone-900"
+                      className={`${inputCls(!!errors.preferredLocation)} cursor-pointer appearance-none pr-10 ${
+                        !formData.preferredLocation
+                          ? "text-secondary"
+                          : "text-stone-900"
                       }`}
                     >
                       <option value="" disabled>
@@ -444,7 +456,7 @@ const LeadForm = () => {
                       ▼
                     </span>
                   </div>
-                  <ErrorMsg error={errors.location} />
+                  <ErrorMsg error={errors.preferredLocation} />
                 </motion.div>
 
                 {/* Message */}
