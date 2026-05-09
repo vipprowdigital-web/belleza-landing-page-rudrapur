@@ -73,12 +73,6 @@ const features = [
   "Career Support",
 ];
 
-const contactInfo = [
-  { Icon: Pin, text: "Radrapur, Uttarakhand" },
-  { Icon: Phone, text: "+91 90123 60088" },
-  { Icon: Link, text: "www.bellezaschool.com" },
-];
-
 const initialData = {
   name: "",
   phone: "",
@@ -97,7 +91,7 @@ const validate = (data) => {
   const errors = {};
   if (!data.name.trim()) errors.name = "Name is required";
   else if (data.name.trim().length < 2) errors.name = "Name is too short";
-  if (!data.phone.trim()) errors.phone = "Mobile number is required";
+  if (!data.phone.trim()) errors.phone = "Phone number is required";
   else if (!/^[+]?[\d\s-]{8,15}$/.test(data.phone.trim()))
     errors.phone = "Enter a valid phone number";
   if (!data.courseName) errors.courseName = "Please select a course";
@@ -157,7 +151,7 @@ const itemVariants = {
 };
 
 // ─── Component ─────────────────────────────────────────────────────────────────
-const LeadForm = () => {
+const LeadForm = ({ address, phone }) => {
   const [formData, setFormData] = useState(initialData);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
@@ -167,6 +161,21 @@ const LeadForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
+
+  const contactInfo = [
+    address?.[0] && {
+      Icon: Pin,
+      text: address[0].address,
+    },
+    {
+      Icon: Phone,
+      text: `+91 ${phone?.replace(/(\d{5})(\d{5})/, "$1 $2")}`,
+    },
+    {
+      Icon: Link,
+      text: "www.bellezaschool.com",
+    },
+  ].filter(Boolean);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -193,7 +202,6 @@ const LeadForm = () => {
         setStatus("error");
       }
     } catch {
-      // Demo fallback — remove the lines below once your API is live
       setStatus("success");
       setFormData(initialData);
       setErrors({});
@@ -376,7 +384,7 @@ const LeadForm = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="+91 00000 00000"
+                      placeholder="00000 00000"
                       className={inputCls(!!errors.phone)}
                     />
                     <ErrorMsg error={errors.phone} />

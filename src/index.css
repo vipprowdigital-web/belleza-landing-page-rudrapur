@@ -9,7 +9,7 @@
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
   background: var(--color-light);

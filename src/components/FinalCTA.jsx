@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { Phone, MapPin, ArrowRight } from "lucide-react";
 import { scrollTo } from "../utils/scrollTo";
-import { openWhatsApp } from "../utils/openWhatsapp";
 
-const FinalCTA = () => {
+const FinalCTA = ({ address, phone }) => {
   return (
     <section className="py-20 bg-light relative overflow-hidden">
       <div className="max-w-8xl mx-auto">
@@ -35,15 +34,15 @@ const FinalCTA = () => {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <motion.button
+              <motion.a
+                href={`tel:${phone}`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="px-8 py-2.5 bg-primary text-light rounded-full font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary transition-all hover:bg-secondary"
-                onClick={openWhatsApp}
               >
                 <Phone className="w-5 h-5" />
                 Book Free Counselling
-              </motion.button>
+              </motion.a>
 
               <motion.button
                 whileHover={{ scale: 1.02 }}
@@ -67,7 +66,7 @@ const FinalCTA = () => {
                     Phone
                   </p>
                   <p className="text-primary font-bold text-lg leading-none">
-                    +91 90123 60088
+                    +91 {phone?.replace(/(\d{5})(\d{5})/, "$1 $2")}
                   </p>
                 </div>
               </div>
@@ -80,9 +79,11 @@ const FinalCTA = () => {
                   <p className="text-[10px] uppercase tracking-widest text-secondary font-bold">
                     Address
                   </p>
-                  <p className="text-secondary font-semibold text-sm leading-relaxed max-w-sm">
-                    Rudrapur, Uttarakhand
-                  </p>
+                  {address && address[0] && (
+                    <p className="text-secondary font-semibold text-sm leading-relaxed max-w-sm">
+                      {address[0]?.address}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>

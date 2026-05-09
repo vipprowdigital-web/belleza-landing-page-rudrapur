@@ -2,7 +2,7 @@ import { Phone, MapPin, Globe } from "lucide-react";
 import { scrollTo } from "../utils/scrollTo";
 import { openWhatsApp } from "../utils/openWhatsapp";
 
-const Footer = () => {
+const Footer = ({ appConfig }) => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -100,16 +100,21 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                <p className="text-sm text-light/70 leading-relaxed">
-                  Rudrapur, Uttarakhand
-                </p>
+                {appConfig.companyAddress && appConfig.companyAddress[0] && (
+                  <p className="text-sm text-light/70 leading-relaxed">
+                    {appConfig.companyAddress[0].address}
+                  </p>
+                )}
               </div>
               <div
                 className="flex items-center gap-3 cursor-pointer"
-                onClick={openWhatsApp}
+                onClick={() => openWhatsApp(appConfig.phoneNumber)}
               >
                 <Phone className="w-5 h-5 text-accent shrink-0" />
-                <p className="text-sm text-light/70">+91 90123 60088</p>
+                <p className="text-sm text-light/70">
+                  +91{" "}
+                  {appConfig.phoneNumber?.replace(/(\d{5})(\d{5})/, "$1 $2")}
+                </p>
               </div>
               <div className="flex items-center gap-3">
                 <Globe className="w-5 h-5 text-accent shrink-0" />

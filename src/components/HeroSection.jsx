@@ -3,10 +3,10 @@ import { Phone, Sparkles, ArrowRight, PlayCircle } from "lucide-react";
 import { openWhatsApp } from "../utils/openWhatsapp";
 import { scrollTo } from "../utils/scrollTo";
 
-const HeroSection = () => {
+const HeroSection = ({ phone }) => {
   return (
-    <section className="w-full relative min-h-[90vh] flex items-center bg-light overflow-hidden pt-20">
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 translate-x-20 z-0" />
+    <section className="w-full relative min-h-[90vh] flex items-center bg-light overflow-hidden pt-30">
+      {/* <div className="absolute top-0 right-0 w-1/3 h-full bg-primary opacity-70 -skew-x-24 translate-x-20 z-0" /> */}
       <motion.div
         animate={{
           scale: [1, 1.2, 1],
@@ -82,7 +82,7 @@ const HeroSection = () => {
             >
               <button
                 className="bg-primary text-light px-7 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-secondary transition-all shadow-2xl shadow-primary/30 flex items-center gap-3 group cursor-pointer"
-                onClick={openWhatsApp}
+                onClick={() => openWhatsApp(phone)}
               >
                 Get Free Counselling
                 <ArrowRight
@@ -93,7 +93,7 @@ const HeroSection = () => {
 
               <button
                 className="flex items-center gap-3 px-8 py-5 text-primary font-bold hover:text-accent transition-colors group cursor-pointer"
-                onClick={() => scrollTo("contact")}
+                onClick={() => scrollTo("courses")}
               >
                 <div className="p-3 bg-white border border-primary/10 rounded-full shadow-lg group-hover:bg-primary transition-all">
                   <PlayCircle size={24} />
@@ -110,7 +110,7 @@ const HeroSection = () => {
               className="pt-6 w-full"
             >
               <a
-                href="tel:9012360088"
+                href={`tel:${phone}`}
                 className="w-full flex sm:justify-start justify-center items-center gap-3 group"
               >
                 <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-primary transition-all">
@@ -121,7 +121,7 @@ const HeroSection = () => {
                     Admission Desk
                   </p>
                   <p className="text-lg font-black sm:text-left text-center text-primary">
-                    +91 90123 60088
+                    +91 {phone?.replace(/(\d{5})(\d{5})/, "$1 $2")}
                   </p>
                 </div>
               </a>

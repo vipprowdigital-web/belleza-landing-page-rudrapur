@@ -1,3 +1,3 @@
-export const openWhatsApp = () => {
-  window.open("https://wa.me/919012360088", "_blank");
+export const openWhatsApp = (number) => {
+  window.open(`https://wa.me/91${number}`, "_blank");
 };
