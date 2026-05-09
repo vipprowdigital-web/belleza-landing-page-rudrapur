@@ -6,6 +6,7 @@ import { baseUrl } from "../utils/baseUrl";
 const StudentExperience = () => {
   const [testimonials, setTestimonials] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const [cardsPerPage, setCardsPerPage] = useState(3);
 
   useEffect(() => {
     const fetchTestimonials = async () => {
@@ -30,15 +31,41 @@ const StudentExperience = () => {
     fetchTestimonials();
   }, []);
 
+  useEffect(() => {
+    const updateCardsPerPage = () => {
+      if (window.innerWidth < 768) {
+        setCardsPerPage(1);
+      } else if (window.innerWidth < 1024) {
+        setCardsPerPage(2);
+      } else {
+        setCardsPerPage(3);
+      }
+    };
+
+    updateCardsPerPage();
+
+    window.addEventListener("resize", updateCardsPerPage);
+
+    return () => window.removeEventListener("resize", updateCardsPerPage);
+  }, []);
+
   if (testimonials.length === 0) return null;
 
-  const isSlider = testimonials.length > 3;
+  const isSlider = testimonials.length > cardsPerPage;
+
+  const safePage =
+    currentPage >= Math.ceil(testimonials.length / cardsPerPage)
+      ? 0
+      : currentPage;
 
   const visibleTestimonials = isSlider
-    ? testimonials.slice(currentPage * 3, currentPage * 3 + 3)
+    ? testimonials.slice(
+        safePage * cardsPerPage,
+        safePage * cardsPerPage + cardsPerPage,
+      )
     : testimonials;
 
-  const totalPages = Math.ceil(testimonials.length / 3);
+  const totalPages = Math.ceil(testimonials.length / cardsPerPage);
 
   const nextPage = () => setCurrentPage((prev) => (prev + 1) % totalPages);
   const prevPage = () =>
@@ -129,7 +156,9 @@ const StudentExperience = () => {
         <div className="relative">
           <motion.div
             layout
-            className={`grid grid-cols-1 md:grid-cols-3 gap-8 ${isSlider ? "min-h-60" : ""}`}
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ${
+              isSlider ? "min-h-60" : ""
+            }`}
           >
             <AnimatePresence mode="wait">
               {visibleTestimonials.map((review, index) => (

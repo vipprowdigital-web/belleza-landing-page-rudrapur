@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { courses } from "../seeds/courses";
 import { Star } from "lucide-react";
 import { scrollTo } from "../utils/scrollTo";
@@ -11,6 +11,25 @@ export default function Courses() {
   const [active, setActive] = useState("offline");
   const [activeSubCategory, setActiveSubCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(0);
+  const [cardsPerPage, setCardsPerPage] = useState(3);
+
+  useEffect(() => {
+    const updateCardsPerPage = () => {
+      if (window.innerWidth < 768) {
+        setCardsPerPage(1);
+      } else if (window.innerWidth < 1024) {
+        setCardsPerPage(2);
+      } else {
+        setCardsPerPage(3);
+      }
+    };
+
+    updateCardsPerPage();
+
+    window.addEventListener("resize", updateCardsPerPage);
+
+    return () => window.removeEventListener("resize", updateCardsPerPage);
+  }, []);
 
   const filteredCourses = courses.filter((course) => {
     const typeMatch = course.type === active;
@@ -20,16 +39,21 @@ export default function Courses() {
     return typeMatch && categoryMatch;
   });
 
-  const isSlider = filteredCourses.length > 3;
+  const isSlider = filteredCourses.length > cardsPerPage;
 
   const safePage =
-    currentPage >= Math.ceil(filteredCourses.length / 3) ? 0 : currentPage;
+    currentPage >= Math.ceil(filteredCourses.length / cardsPerPage)
+      ? 0
+      : currentPage;
 
   const visibleCourses = isSlider
-    ? filteredCourses.slice(safePage * 3, safePage * 3 + 3)
+    ? filteredCourses.slice(
+        safePage * cardsPerPage,
+        safePage * cardsPerPage + cardsPerPage,
+      )
     : filteredCourses;
 
-  const totalPages = Math.ceil(filteredCourses.length / 3);
+  const totalPages = Math.ceil(filteredCourses.length / cardsPerPage);
 
   const nextPage = () => setCurrentPage((prev) => (prev + 1) % totalPages);
 
