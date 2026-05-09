@@ -47,10 +47,10 @@ const careerPaths = [
 
 const CareerOpportunities = () => {
   return (
-    <section className="py-15 px-6 bg-light" id="career">
+    <section className="py-15 px-4 sm:px-6 bg-light" id="career">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-7 sm:mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -74,7 +74,7 @@ const CareerOpportunities = () => {
         </div>
 
         {/* Career Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
           {careerPaths.map((path, index) => (
             <motion.div
               key={index}
@@ -82,22 +82,22 @@ const CareerOpportunities = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               whileHover={{ y: -5 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-accent p-8 rounded-4xl border border-secondary hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300"
+              className="bg-accent px-3 py-5 sm:p-8 rounded-2xl sm:rounded-4xl border border-secondary hover:shadow-2xl hover:shadow-primary transition-all duration-300"
             >
-              <div className="w-12 h-12 bg-primary text-accent rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-primary/10">
+              <div className="w-12 h-12 bg-primary text-accent rounded-2xl flex items-center justify-center mb-2 sm:mb-6 shadow-lg shadow-primary/10">
                 {path.icon}
               </div>
-              <h3 className="text-primary tracking-tight text-xl font-bold mb-2">
+              <h3 className="text-primary tracking-tight leading-tight text-md sm:text-xl font-bold mb-1 sm:mb-2">
                 {path.title}
               </h3>
               <ul className="space-y-1">
                 {path.roles.map((role, i) => (
                   <li
                     key={i}
-                    className="text-secondary font-semibold tracking-tight text-sm flex items-center gap-2"
+                    className="text-secondary font-semibold tracking-tight text-sm flex items-center justify-start gap-2"
                   >
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                    {role}
+                    <div className="sm:block hidden w-1.5 h-1.5 bg-primary rounded-full" />
+                    <p className="leading-tight">{role}</p>
                   </li>
                 ))}
               </ul>

@@ -15,7 +15,7 @@ const FinalCTA = ({ address, phone }) => {
             className="space-y-8 px-4 sm:px-8"
           >
             <div>
-              <h2 className="text-primary text-2xl md:text-5xl font-bold tracking-tighter leading-tight mb-3">
+              <h2 className="text-primary text-3xl md:text-5xl font-bold tracking-tighter leading-tight mb-3">
                 Begin Your Beauty Journey with <br />
                 <span className="text-secondary italic font-serif">
                   Belleza Rudrapur

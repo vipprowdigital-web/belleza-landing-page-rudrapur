@@ -56,7 +56,7 @@ const TargetAudience = () => {
   ];
 
   return (
-    <section className="sm:py-24 px-6 bg-light">
+    <section className="sm:py-24 px-4 sm:px-6 bg-light">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -73,7 +73,7 @@ const TargetAudience = () => {
         </div>
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {categories.map((item, index) => (
             <motion.div
               key={index}
@@ -81,18 +81,18 @@ const TargetAudience = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="group p-8 rounded-4xl bg-light border border-secondary hover:bg-primary transition-all duration-500 cursor-default"
+              className="group px-4 py-6 sm:p-8 rounded-4xl bg-light border border-secondary hover:bg-primary transition-all duration-500 cursor-default"
             >
-              <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center mb-6 shadow-sm group-hover:bg-accent transition-colors duration-500">
+              <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center mb-2 sm:mb-6 shadow-sm group-hover:bg-accent transition-colors duration-500">
                 <div className="group-hover:scale-110 transition-transform duration-500">
                   {item.icon}
                 </div>
               </div>
 
-              <h3 className="text-lg font-black text-primary tracking-tight group-hover:text-light transition-colors duration-500">
+              <h3 className="text-lg font-black text-primary tracking-tight leading-tight group-hover:text-light transition-colors duration-500 mb-1">
                 {item.title}
               </h3>
-              <p className="text-sm text-secondary leading-relaxed font-medium group-hover:text-light/70 transition-colors duration-500">
+              <p className="text-sm text-secondary sm:leading-relaxed leading-tight font-medium group-hover:text-light/70 transition-colors duration-500">
                 {item.desc}
               </p>
             </motion.div>
