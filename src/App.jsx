@@ -17,7 +17,6 @@ import FAQs from "./components/FAQs";
 import FinalCTA from "./components/FinalCTA";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-// import FloatingContact from "./components/FloatingContact";
 import Courses from "./components/Courses";
 import CareerJourney from "./components/CareerJourney";
 import RudrapurLaunch from "./components/RudrapurLaunch";
