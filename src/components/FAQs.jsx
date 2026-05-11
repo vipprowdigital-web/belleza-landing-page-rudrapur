@@ -103,7 +103,7 @@ const FAQs = () => {
             className="text-primary text-2xl md:text-4xl font-bold mt-2 tracking-tight"
           >
             Frequently Asked{" "}
-            <span className="text-secondary italic font-serif">Questions</span>
+            <span className="text-secondary font-serif">Questions</span>
           </motion.h2>
         </div>
 

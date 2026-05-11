@@ -17,7 +17,7 @@ const FinalCTA = ({ address, phone }) => {
             <div>
               <h2 className="text-primary text-3xl md:text-5xl font-bold tracking-tighter leading-tight mb-3">
                 Begin Your Beauty Journey with <br />
-                <span className="text-secondary italic font-serif">
+                <span className="text-secondary font-serif">
                   Belleza Rudrapur
                 </span>
               </h2>

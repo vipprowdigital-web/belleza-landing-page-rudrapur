@@ -67,7 +67,7 @@ const TargetAudience = () => {
             className="text-4xl md:text-5xl font-bold text-primary tracking-tighter mb-4"
           >
             Who Should Join <br className="sm:hidden" />
-            <span className="text-secondary italic">Belleza Rudrapur?</span>
+            <span className="text-secondary">Belleza Rudrapur?</span>
           </motion.h2>
           <div className="w-20 h-1.5 bg-primary mx-auto rounded-full" />
         </div>

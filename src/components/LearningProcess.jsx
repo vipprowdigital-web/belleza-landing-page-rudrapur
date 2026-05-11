@@ -54,7 +54,7 @@ const LearningProcess = () => {
         <div className="text-center mb-20">
           <h2 className="text-primary text-4xl md:text-5xl font-bold tracking-tight">
             How We Help You Become{" "}
-            <span className="text-secondary italic font-serif">
+            <span className="text-secondary font-serif">
               Career-Ready
             </span>
           </h2>

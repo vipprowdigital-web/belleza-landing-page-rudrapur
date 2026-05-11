@@ -27,8 +27,8 @@ const HeroSection = ({ phone }) => {
                 className="text-4xl lg:text-6xl font-black sm:text-left text-center text-primary tracking-tighter leading-[0.9] mt-10 md:mt-0"
               >
                 Start Your <br />
-                Beauty Career <br />
-                <span className="text-secondary italic relative">
+                <p className="mb-2">Beauty Career</p>
+                <span className="text-secondary relative">
                   from Rudrapur
                   <svg
                     className="absolute -bottom-2 left-0 w-full h-3 text-primary/10"
@@ -53,7 +53,7 @@ const HeroSection = ({ phone }) => {
               >
                 Build your future in the beauty industry with Belleza Beauty
                 School Rudrapur. Learn professional{" "}
-                <span className="text-primary font-bold italic">
+                <span className="text-primary font-bold">
                   Makeup, Hair, Nail, Skin & Cosmetology
                 </span>{" "}
                 with practical training and expert mentorship.

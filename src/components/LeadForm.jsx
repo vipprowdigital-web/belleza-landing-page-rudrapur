@@ -229,7 +229,7 @@ const LeadForm = ({ address, phone }) => {
         </p>
         <h2 className="text-4xl font-bold tracking-tight text-primary md:text-5xl">
           Begin Your{" "}
-          <span className="text-secondary italic font-serif">
+          <span className="text-secondary font-serif">
             Beauty Journey
           </span>
         </h2>

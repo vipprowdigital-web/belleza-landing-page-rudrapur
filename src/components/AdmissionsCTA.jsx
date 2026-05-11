@@ -36,7 +36,7 @@ const AdmissionsCTA = () => {
         >
           Admissions Open for
           <br />
-          <span className="text-secondary italic font-serif">
+          <span className="text-secondary font-serif">
             Rudrapur Branch
           </span>
         </motion.h2>

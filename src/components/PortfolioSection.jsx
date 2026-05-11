@@ -68,7 +68,7 @@
 //           className="text-primary text-3xl md:text-5xl font-bold tracking-tighter mb-8 leading-[1.1]"
 //         >
 //           Build Your <br />
-//           <span className="text-secondary italic font-serif">
+//           <span className="text-secondary font-serif">
 //             Professional Portfolio
 //           </span>
 //         </motion.h2>
@@ -124,7 +124,7 @@ const PortfolioSection = () => {
             >
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6 leading-tight">
                 Build a Portfolio That <br />
-                <span className="text-accent italic">Opens Opportunities</span>
+                <span className="text-accent">Opens Opportunities</span>
               </h2>
               <p className="text-light/70 text-lg leading-relaxed max-w-xl font-medium">
                 Your portfolio is your proof of skill. At Belleza Beauty School
@@ -140,7 +140,7 @@ const PortfolioSection = () => {
               transition={{ delay: 0.4 }}
               className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-4xl space-y-6"
             >
-              <p className="text-accent font-bold leading-relaxed italic">
+              <p className="text-accent font-bold leading-relaxed">
                 "A strong portfolio helps students approach bridal clients,
                 salons, studios, and online audiences with confidence."
               </p>
@@ -165,7 +165,7 @@ const PortfolioSection = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6 }}
-              className="text-sm text-light/50 font-medium italic"
+              className="text-sm text-light/50 font-medium"
             >
               From makeup and hair to nails and beauty services, students learn
               to present their work professionally.

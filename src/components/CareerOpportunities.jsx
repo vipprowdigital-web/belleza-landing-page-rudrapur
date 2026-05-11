@@ -58,7 +58,7 @@ const CareerOpportunities = () => {
             className="text-primary text-4xl md:text-5xl font-bold tracking-tight mb-2"
           >
             What Can You Become{" "}
-            <span className="text-secondary italic font-serif">
+            <span className="text-secondary font-serif">
               After Training?
             </span>
           </motion.h2>

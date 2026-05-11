@@ -82,7 +82,7 @@ const StudentExperience = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-primary tracking-tighter">
-              Student <span className="text-secondary italic">Experience</span>
+              Student <span className="text-secondary">Experience</span>
             </h2>
             <div className="w-16 h-1 bg-primary mt-4" />
           </motion.div>
@@ -126,7 +126,7 @@ const StudentExperience = () => {
               </div>
 
               <div className="bg-white p-8 rounded-[2.5rem] border border-primary shadow-sm hover:shadow-2xl hover:shadow-primary transition-all duration-500 h-full flex flex-col justify-between">
-                <p className="text-primary font-medium leading-relaxed italic mb-8">
+                <p className="text-primary font-medium leading-relaxed mb-8">
                   {review.description.replace(/<\/?p>/g, "")}
                 </p>
 
@@ -176,7 +176,7 @@ const StudentExperience = () => {
                   </div>
 
                   <div className="bg-white p-8 rounded-[2.5rem] border border-primary shadow-sm hover:shadow-2xl hover:shadow-primary transition-all duration-500 h-full flex flex-col justify-between">
-                    <p className="text-primary font-medium leading-relaxed italic mb-8">
+                    <p className="text-primary font-medium leading-relaxed mb-8">
                       {review.description.replace(/<\/?p>/g, "")}
                     </p>
 

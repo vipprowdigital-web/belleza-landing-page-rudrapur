@@ -53,16 +53,16 @@ function App() {
     <div className="flex flex-col justify-center items-center bg-light">
       <Navbar />
       <HeroSection phone={appConfig.phoneNumber} />
+      <Courses />
       <LeadForm
         address={appConfig.companyAddress}
         phone={appConfig.phoneNumber}
       />
       <About />
+      <LearningProcess />
       <CareerJourney />
       <WhyChooseUs />
       {/* <ProfessionalCourses /> */}
-      <Courses />
-      <LearningProcess />
       <WhatYouGet />
       <PortfolioSection />
       <CareerOpportunities />

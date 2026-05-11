@@ -6,12 +6,37 @@ import { Star } from "lucide-react";
 import { scrollTo } from "../utils/scrollTo";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+// import { baseUrl } from "../utils/baseUrl";
 
 export default function Courses() {
   const [active, setActive] = useState("offline");
   const [activeSubCategory, setActiveSubCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(0);
   const [cardsPerPage, setCardsPerPage] = useState(3);
+  // const [allCourses, setAllCourses] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchAllCourses = async () => {
+  //     try {
+  //       const response = await fetch(`${baseUrl}/course`, {
+  //         method: "GET",
+  //         headers: { "Content-Type": "application/json" },
+  //       });
+  //       console.log("Response: ", response);
+
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         console.log("Response DATA: ", data.data);
+  //         setAllCourses(data.data);
+  //       } else {
+  //         console.error("Couldn't fetch courses.");
+  //       }
+  //     } catch {
+  //       console.error("Error while fetching courses.");
+  //     }
+  //   };
+  //   fetchAllCourses();
+  // }, []);
 
   useEffect(() => {
     const updateCardsPerPage = () => {
@@ -62,6 +87,20 @@ export default function Courses() {
 
   return (
     <section className="w-full" id="courses">
+      <div className="text-center mb-10 mt-30">
+        <p className="text-secondary uppercase tracking-widest text-[10px] sm:text-xs font-bold">
+          Explore & Enroll
+        </p>
+        <h2 className="text-primary text-4xl md:text-5xl font-bold mb-3 sm:mb-4 tracking-tight">
+          Featured <span className="text-secondary font-serif">Courses</span>
+        </h2>
+
+        <p className="text-secondary capitalize tracking-tight text-sm sm:text-lg px-3 sm:max-w-2xl text-center mx-auto">
+          Our globally recognized curriculum and career-focused approach help
+          students master beauty skills and confidently step into the
+          professional industry.
+        </p>
+      </div>
       {/* Toggle Offline/Online */}
       <div className="border border-primary grid grid-cols-2 mx-auto h-10 font-bold text-primary sm:text-sm text-xs overflow-hidden">
         <button
@@ -82,21 +121,6 @@ export default function Courses() {
         fn={setActiveSubCategory}
       />
       <div className="my-10"></div>
-      <div className="text-center mb-10">
-        <p className="text-secondary uppercase tracking-widest text-[10px] sm:text-xs font-bold">
-          Explore & Enroll
-        </p>
-        <h2 className="text-primary text-4xl md:text-5xl font-bold mb-3 sm:mb-4 tracking-tight">
-          Featured{" "}
-          <span className="text-secondary italic font-serif">Courses</span>
-        </h2>
-
-        <p className="text-secondary capitalize tracking-tight text-sm sm:text-lg px-3 sm:max-w-2xl text-center mx-auto">
-          Our globally recognized curriculum and career-focused approach help
-          students master beauty skills and confidently step into the
-          professional industry.
-        </p>
-      </div>
       {isSlider && (
         <div className="flex justify-end gap-3 px-2 sm:px-0 sm:mr-30 mr-0">
           <button
@@ -212,22 +236,44 @@ export default function Courses() {
                 );
               })}
             </AnimatePresence>
-            {/* {filteredCourses.map((course) => {
+          </div>
+        ) : (
+          <div className="w-full p-10 sm:p-20 flex justify-center items-center">
+            <h2 className="text-2xl sm:text-3xl tracking-tighter font-semibold text-primary text-center">
+              Online Courses{" "}
+              <span className="text-secondary">Coming Soon!</span>
+            </h2>
+          </div>
+        )}
+      </div>
+
+      {/* FOR COURSES FROM BACKEND  */}
+      {/* {allCourses.length !== 0 && (
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-7 lg:gap-10 place-items-center md:place-items-start gap-10">
+          <AnimatePresence mode="wait">
+            {allCourses.map((course, index) => {
               return (
-                <div
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.1,
+                  }}
                   key={course.id}
                   className="group bg-light flex flex-col rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-secondary h-full"
                 >
                   <div className="relative h-64 w-full overflow-hidden">
                     <img
-                      src={course.image || "/api/placeholder/400/320"}
+                      src={course.thumbnail || "/assets/images/bg-img.jpg"}
                       alt={course.name}
                       className="w-full h-full object-cover transition-transform rounded-2xl duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-primary/40 to-transparent opacity-60" />
                     <div className="absolute top-5 left-5 px-4 py-1 bg-secondary backdrop-blur-md border border-white/30 rounded-full">
                       <span className="text-light text-[10px] font-bold uppercase tracking-[0.2em]">
-                        {course.category}
+                        {course.category?.name}
                       </span>
                     </div>
                   </div>
@@ -260,22 +306,45 @@ export default function Courses() {
                         {course.name}
                       </h2>
                       <p className="text-sm text-secondary/70 leading-relaxed line-clamp-2">
-                        {course.desc}
+                        {course.short_description}
                       </p>
                     </div>
                     <ul className="space-y-3 mb-8 grow">
-                      {course.summary.map((sum) => (
-                        <li
-                          key={sum}
-                          className="text-sm text-primary font-medium flex items-start gap-3"
-                        >
-                          <div className="mt-1 w-4 h-4 rounded-full bg-accent flex items-center justify-center shrink-0">
-                            <div className="w-1.5 h-1.5 bg-secondary rounded-full" />
-                          </div>
-                          {sum}
-                        </li>
-                      ))}
+                      {course.description
+                        .replace(/<\/?(p|strong)>/g, "")
+                        .trim()
+                        .split(".")
+                        .filter((sum) => sum.trim() !== "")
+                        .map((sum) => (
+                          <li
+                            key={sum}
+                            className="text-sm text-primary font-medium flex items-start gap-3"
+                          >
+                            <div className="mt-1 w-4 h-4 rounded-full bg-accent flex items-center justify-center shrink-0">
+                              <div className="w-1.5 h-1.5 bg-secondary rounded-full" />
+                            </div>
+                            {sum}
+                          </li>
+                        ))}
                     </ul>
+                    <div className="space-y-2 mb-6 text-sm text-secondary font-medium">
+                      <div className="grid grid-cols-2 capitalize">
+                        <p>Level - {course.level || "Beginner"}</p>
+                        <p>Duration - {course.duration || "12"} weeks</p>
+                      </div>
+                      <div className="grid grid-cols-2 capitalize">
+                        <p>Lessons - {course.lessons_count || 15}</p>
+                        <p>
+                          Fees -{" "}
+                          <span className="line-through">
+                            ₹{course.price || 80000}
+                          </span>{" "}
+                          <span className="text-primary font-bold text-lg">
+                            ₹{course.sale_price || 59996}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
                     <button
                       className="relative w-full overflow-hidden bg-primary text-light py-4 rounded-2xl font-bold transition-all duration-300 hover:bg-secondary group/btn shadow-lg shadow-primary/10"
                       onClick={() => scrollTo("contact")}
@@ -289,19 +358,12 @@ export default function Courses() {
                       </span>
                     </button>
                   </div>
-                </div>
+                </motion.div>
               );
-            })} */}
-          </div>
-        ) : (
-          <div className="w-full p-10 sm:p-20 flex justify-center items-center">
-            <h2 className="text-2xl sm:text-3xl tracking-tighter font-semibold text-primary text-center">
-              Online Courses{" "}
-              <span className="text-secondary">Coming Soon!</span>
-            </h2>
-          </div>
-        )}
-      </div>
+            })}
+          </AnimatePresence>
+        </div>
+      )} */}
     </section>
   );
 }

@@ -37,7 +37,7 @@ const CareerJourney = () => {
             className="text-4xl md:text-5xl font-bold text-primary tracking-tighter mb-6"
           >
             From Learning to Earning — <br />
-            <span className="text-secondary italic">
+            <span className="text-secondary">
               We Prepare You for Real Work
             </span>
           </motion.h2>

@@ -37,7 +37,7 @@ const WhatYouGet = () => {
             </h4>
             <h2 className="text-primary text-4xl md:text-5xl font-bold mb-8 tracking-tight">
               What You Receive at{" "}
-              <span className="text-secondary italic font-serif">Belleza</span>
+              <span className="text-secondary font-serif">Belleza</span>
             </h2>
 
             {/* Benefits Grid (Inside the Left Col) */}

@@ -47,8 +47,7 @@ const Footer = ({ appConfig }) => {
           <div className="space-y-6">
             <div>
               <h3 className="text-2xl font-bold tracking-tighter">
-                Belleza{" "}
-                <span className="text-accent italic">Beauty School</span>
+                Belleza <span className="text-accent">Beauty School</span>
               </h3>
               <p className="text-accent/60 text-[10px] uppercase tracking-[0.3em] font-bold mt-1">
                 Rudrapur Branch

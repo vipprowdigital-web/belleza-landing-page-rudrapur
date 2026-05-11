@@ -44,7 +44,7 @@ const RudrapurLaunch = () => {
                   School Rudrapur brings practical, premium, and career-focused
                   beauty education closer to aspiring artists.
                 </p>
-                <p className="text-primary font-bold italic border-l-4 border-primary pl-6 py-2">
+                <p className="text-primary font-bold border-l-4 border-primary pl-6 py-2">
                   "You don’t need to move to a bigger city to begin your beauty
                   career. With the right training and guidance, you can start
                   from Rudrapur and grow professionally."

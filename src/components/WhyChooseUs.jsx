@@ -68,7 +68,7 @@ const WhyChooseUs = () => {
             className="text-primary text-4xl md:text-5xl font-bold mt-4 tracking-tight"
           >
             Why Belleza{" "}
-            <span className="italic font-serif text-secondary">
+            <span className="text-secondary">
               Beauty School Rudrapur?
             </span>
           </motion.h2>

@@ -29,7 +29,7 @@ export default function About() {
                 />
                 {/* Floating Badge */}
                 <div className="absolute bottom-2 right-2 sm:bottom-6 sm:right-6 bg-primary px-2 sm:px-4 py-1 sm:py-2 rounded-sm sm:rounded-xl shadow-lg">
-                  <p className="text-accent text-sm sm:text-2xl font-bold italic">
+                  <p className="text-accent text-sm sm:text-2xl font-bold">
                     100%
                   </p>
                   <p className="text-light text-[8px] sm:text-[10px] uppercase tracking-widest font-semibold">
@@ -52,9 +52,7 @@ export default function About() {
                 </h4>
                 <h2 className="font-bold tracking-tighter text-primary text-4xl md:text-5xl leading-tight">
                   Professional Beauty Training{" "}
-                  <span className="text-secondary italic">
-                    for Ambitious Learners
-                  </span>
+                  <span className="text-secondary">for Ambitious Learners</span>
                 </h2>
               </motion.div>
 
