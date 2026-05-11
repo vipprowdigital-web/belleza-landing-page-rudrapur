@@ -15,10 +15,10 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="relative order-2 sm:order-1 h-full"
+              className="relative order-2 sm:order-1 h-100 sm:h-full"
             >
               {/* Decorative background element */}
-              <div className="absolute -top-4 -left-4 w-64 h-64 bg-accent/20 rounded-full blur-3xl" />
+              <div className="absolute -top-4 -left-4 w-64 h-64 bg-accent rounded-full blur-3xl" />
 
               <div className="relative h-full rounded-2xl overflow-hidden shadow-2xl">
                 <img
@@ -28,8 +28,8 @@ export default function About() {
                   loading="lazy"
                 />
                 {/* Floating Badge */}
-                <div className="absolute bottom-6 right-6 bg-primary px-4 py-2 rounded-xl shadow-lg">
-                  <p className="text-accent sm:text-2xl font-bold italic">
+                <div className="absolute bottom-2 right-2 sm:bottom-6 sm:right-6 bg-primary px-2 sm:px-4 py-1 sm:py-2 rounded-sm sm:rounded-xl shadow-lg">
+                  <p className="text-accent text-sm sm:text-2xl font-bold italic">
                     100%
                   </p>
                   <p className="text-light text-[8px] sm:text-[10px] uppercase tracking-widest font-semibold">
@@ -72,7 +72,7 @@ export default function About() {
                   nails, skin, beauty, and cosmetology with a strong focus on
                   practical learning.
                 </p>
-                <p>
+                <p className="sm:block hidden">
                   Here, students learn more than techniques. They learn product
                   knowledge, hygiene, client handling, service confidence,
                   portfolio creation, and the professional skills needed to work

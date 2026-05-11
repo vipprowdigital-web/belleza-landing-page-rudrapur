@@ -211,7 +211,7 @@ const LeadForm = ({ address, phone }) => {
   return (
     <section
       id="contact"
-      className="relative w-full overflow-hidden bg-linear-to-br px-2 py-20 md:px-8"
+      className="relative w-full overflow-hidden bg-linear-to-br px-2 pt-20 sm:py-20 md:px-8"
     >
       {/* Decorative blobs */}
       {/* <div className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 rounded-full bg-secondary blur-3xl" />

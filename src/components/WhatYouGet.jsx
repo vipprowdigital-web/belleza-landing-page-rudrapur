@@ -95,7 +95,7 @@ const WhatYouGet = () => {
                 <div className="text-primary font-bold text-md">
                   Premium Facility
                 </div>
-                <div className="text-secondary text-xs font-bold uppercase tracking-tighter">
+                <div className="text-accent text-xs font-bold uppercase tracking-tight">
                   Rudrapur, Uttarakhand
                 </div>
               </div>

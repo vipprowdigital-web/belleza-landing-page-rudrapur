@@ -143,12 +143,12 @@ const HeroSection = ({ phone }) => {
                 <div className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat bg-[url('/assets/images/makeup-sessions.jpg')]" />
 
                 {/* Content inside Box */}
-                <div className="absolute inset-0 flex flex-col justify-end p-12 text-light z-20">
+                <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-12 text-light z-20">
                   <div className="space-y-2 mb-5">
                     <p className="text-light font-black tracking-[0.3em] uppercase text-xs">
                       Practical Training
                     </p>
-                    <h3 className="text-3xl text-accent font-bold leading-tight">
+                    <h3 className="sm:text-3xl text-accent font-bold leading-tight">
                       Live Model <br /> Practice Sessions
                     </h3>
                   </div>
