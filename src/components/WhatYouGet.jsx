@@ -87,6 +87,7 @@ const WhatYouGet = () => {
                 src="https://res.cloudinary.com/dt5azqjuz/image/upload/f_auto,q_auto/2_zdyomb.png"
                 alt="Academy Environment"
                 className="w-full sm:h-150 object-cover hover:scale-110 transition-transform duration-700"
+                loading="lazy"
               />
 
               {/* Overlay Badge */}

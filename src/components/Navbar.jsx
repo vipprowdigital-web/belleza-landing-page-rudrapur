@@ -41,6 +41,7 @@ const Navbar = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
             whileHover={{ scale: 1.05 }}
+            loading="lazy"
           />
         </motion.div>
 

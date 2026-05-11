@@ -236,6 +236,7 @@ const PortfolioSection = () => {
                       src="https://res.cloudinary.com/dt5azqjuz/image/upload/f_auto,q_auto/Glam_Look_l1usvm.png"
                       alt="Portfolio Image"
                       className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                   </div>
                 </motion.div>
@@ -263,6 +264,7 @@ const PortfolioSection = () => {
               <img
                 src="https://res.cloudinary.com/dt5azqjuz/image/upload/f_auto,q_auto/eye_makeup_mfwkif.png"
                 alt="Portfolio Image"
+                loading="lazy"
               />
               <p className="text-primary font-black text-xl leading-tight">
                 100+ <br />

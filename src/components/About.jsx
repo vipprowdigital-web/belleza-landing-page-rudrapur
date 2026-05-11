@@ -25,6 +25,7 @@ export default function About() {
                   src="/assets/images/training-sessions.jpg"
                   alt="Belleza Beauty School Training"
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
                 {/* Floating Badge */}
                 <div className="absolute bottom-6 right-6 bg-primary px-4 py-2 rounded-xl shadow-lg">

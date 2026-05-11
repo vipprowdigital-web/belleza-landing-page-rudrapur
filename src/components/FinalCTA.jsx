@@ -104,6 +104,7 @@ const FinalCTA = ({ address, phone }) => {
                 src="https://res.cloudinary.com/dt5azqjuz/image/upload/f_auto,q_auto/BRIDAL_sboc55.png"
                 alt="Professional Beauty Training"
                 className="w-full h-full object-contain grayscale-70 group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                loading="lazy"
               />
               {/* Overlay Gradient */}
               <div className="absolute inset-0 bg-linear-to-t from-primary/60 to-transparent opacity-60" />

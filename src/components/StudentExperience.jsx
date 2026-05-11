@@ -187,6 +187,7 @@ const StudentExperience = () => {
                             src={review.avatar}
                             alt={review.name}
                             className="w-full h-full object-cover rounded-full"
+                            loading="lazy"
                           />
                         ) : (
                           <UserCircle2 size={32} className="text-secondary" />
