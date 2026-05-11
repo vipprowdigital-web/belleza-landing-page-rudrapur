@@ -131,7 +131,7 @@ const FAQs = () => {
           className="sm:mt-12 p-8 bg-light rounded-4xl flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <p className="text-primary text-center font-medium tracking-tight">
-            Still have more questions about our Dehradun branch?
+            Still have more questions about our Rudrapur branch?
           </p>
           <button
             className="px-8 py-3 bg-primary text-light rounded-full font-bold text-sm hover:bg-accent hover:text-primary transition-all duration-300"

@@ -15,14 +15,14 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="relative order-2 sm:order-1"
+              className="relative order-2 sm:order-1 h-full"
             >
               {/* Decorative background element */}
               <div className="absolute -top-4 -left-4 w-64 h-64 bg-accent/20 rounded-full blur-3xl" />
 
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative h-full rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/assets/images/bg-img.jpg"
+                  src="/assets/images/training-sessions.jpg"
                   alt="Belleza Beauty School Training"
                   className="w-full h-full object-cover"
                 />

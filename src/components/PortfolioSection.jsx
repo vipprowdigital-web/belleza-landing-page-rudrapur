@@ -79,7 +79,7 @@
 //           className="text-primary text-md md:text-xl font-medium leading-tight mb-3 tracking-tighter"
 //         >
 //           A strong portfolio helps every beauty professional show their work
-//           confidently. At Belleza Beauty School Dehradun, students get
+//           confidently. At Belleza Beauty School Rudrapur, students get
 //           opportunities to create professional looks during their training.
 //         </motion.p>
 
@@ -101,7 +101,7 @@
 // export default PortfolioSection;
 
 import { motion } from "framer-motion";
-import { Camera, Briefcase, Sparkles } from "lucide-react";
+import { Camera, Briefcase } from "lucide-react";
 
 const PortfolioSection = () => {
   const highlights = [
@@ -186,28 +186,60 @@ const PortfolioSection = () => {
                 className="aspect-3/4 rounded-3xl bg-secondary/20 border border-white/10 overflow-hidden relative group"
               >
                 {/* <div className="absolute inset-0 bg-linear-to-t from-primary via-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-500" /> */}
-                <img
-                  src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"
-                  alt=""
+                {/* <img
+                  src="https://res.cloudinary.com/dt5azqjuz/image/upload/f_auto,q_auto/Glam_Look_l1usvm.png"
+                  className="rounded-3xl h-full object-cover"
+                  alt="Portfolio Image"
                 />
-                {/* <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0 duration-500">
+                <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0 duration-500">
                   <p className="text-xs font-bold uppercase tracking-widest text-accent">
-                    Bridal Makeup
+                    Glam Look
                   </p>
                 </div> */}
               </motion.div>
 
               {/* Stacked Images 2 & 3 */}
+              {/* <div className="space-y-4 pt-12">
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="aspect-square rounded-3xl bg-accent border border-white/10 flex items-center justify-center relative overflow-hidden group p-2"
+                >
+                  <img
+                    src="https://res.cloudinary.com/dt5azqjuz/image/upload/f_auto,q_auto/Glam_Look_l1usvm.png"
+                    className="rounded-3xl w-full h-full object-contain"
+                    alt="Portfolio Image"
+                  />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                  className="aspect-4/5 rounded-3xl bg-secondary/20 border border-white/10 overflow-hidden"
+                >
+                  <div className="w-full h-full bg-linear-to-br from-accent/20 to-primary" />
+                </motion.div>
+              </div> */}
               <div className="space-y-4 pt-12">
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
-                  className="aspect-square rounded-3xl bg-secondary/20 border border-white/10 flex items-center justify-center relative overflow-hidden group"
+                  className="aspect-square bg-accent rounded-2xl p-6 shadow-2xl"
                 >
-                  <Sparkles className="text-accent/20 w-12 h-12 group-hover:scale-125 transition-transform" />
+                  <div className="w-full h-full overflow-hidden bg-accent flex items-center justify-center">
+                    <img
+                      src="https://res.cloudinary.com/dt5azqjuz/image/upload/f_auto,q_auto/Glam_Look_l1usvm.png"
+                      alt="Portfolio Image"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </motion.div>
+
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -226,11 +258,11 @@ const PortfolioSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.8 }}
-              className="absolute -bottom-8 -left-8 md:bottom-0 md:-left-12 bg-accent p-6 rounded-2xl shadow-2xl rotate-[-4deg]"
+              className="absolute -bottom-8 -left-8 md:bottom-0 md:-left-4 bg-accent p-6 rounded-2xl shadow-2xl rotate-[-4deg]"
             >
               <img
-                src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb"
-                alt=""
+                src="https://res.cloudinary.com/dt5azqjuz/image/upload/f_auto,q_auto/eye_makeup_mfwkif.png"
+                alt="Portfolio Image"
               />
               <p className="text-primary font-black text-xl leading-tight">
                 100+ <br />

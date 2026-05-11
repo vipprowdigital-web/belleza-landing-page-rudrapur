@@ -84,7 +84,7 @@ const WhatYouGet = () => {
 
             <div className="relative sm:rounded-[3rem] overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1000&auto=format&fit=crop"
+                src="https://res.cloudinary.com/dt5azqjuz/image/upload/f_auto,q_auto/2_zdyomb.png"
                 alt="Academy Environment"
                 className="w-full sm:h-150 object-cover hover:scale-110 transition-transform duration-700"
               />
@@ -95,7 +95,7 @@ const WhatYouGet = () => {
                   Premium Facility
                 </div>
                 <div className="text-secondary text-xs font-bold uppercase tracking-tighter">
-                  Dehradun, Uttarakhand
+                  Rudrapur, Uttarakhand
                 </div>
               </div>
             </div>

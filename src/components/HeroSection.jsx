@@ -140,19 +140,19 @@ const HeroSection = ({ phone }) => {
               <div className="absolute inset-0 bg-linear-to-br from-primary to-secondary rounded-[4rem] overflow-hidden shadow-3xl">
                 {/* Overlay Texture */}
                 {/* <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 mix-blend-overlay" /> */}
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526045612212-70caf35c14df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')]  mix-blend-overlay" />
+                <div className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat bg-[url('/assets/images/makeup-sessions.jpg')]" />
 
                 {/* Content inside Box */}
                 <div className="absolute inset-0 flex flex-col justify-end p-12 text-light z-20">
-                  <div className="space-y-2 mb-8">
-                    <p className="text-accent font-black tracking-[0.3em] uppercase text-xs">
+                  <div className="space-y-2 mb-5">
+                    <p className="text-light font-black tracking-[0.3em] uppercase text-xs">
                       Practical Training
                     </p>
-                    <h3 className="text-3xl text-primary font-bold leading-tight">
+                    <h3 className="text-3xl text-accent font-bold leading-tight">
                       Live Model <br /> Practice Sessions
                     </h3>
                   </div>
-                  <div className="h-1 w-20 bg-accent rounded-full" />
+                  <div className="h-1 w-20 bg-light rounded-full" />
                 </div>
               </div>
 

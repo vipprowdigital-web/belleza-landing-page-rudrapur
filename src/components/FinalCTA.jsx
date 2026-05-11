@@ -101,22 +101,20 @@ const FinalCTA = ({ address, phone }) => {
 
             <div className="aspect-3/3 overflow-hidden relative group">
               <img
-                src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=2087&auto=format&fit=crop"
+                src="https://res.cloudinary.com/dt5azqjuz/image/upload/f_auto,q_auto/BRIDAL_sboc55.png"
                 alt="Professional Beauty Training"
-                className="w-full h-full object-cover grayscale-20 group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                className="w-full h-full object-contain grayscale-70 group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
               {/* Overlay Gradient */}
               <div className="absolute inset-0 bg-linear-to-t from-primary/60 to-transparent opacity-60" />
 
               {/* Floating Badge */}
-              <div className="absolute bottom-8 left-8  backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/20">
-                <p className="text-primary font-bold text-sm">
-                  Enrollment Open
+              {/* <div className="absolute bottom-8 left-8  backdrop-blur-sm p-4 rounded-2xl shadow-xl border border-white/20">
+                <p className="text-accent font-bold text-sm">Enrollment Open</p>
+                <p className="text-light text-[10px] font-bold uppercase tracking-tight">
+                  Rudrapur Academy
                 </p>
-                <p className="text-secondary text-[10px] font-bold uppercase tracking-tighter">
-                  Dehradun Academy
-                </p>
-              </div>
+              </div> */}
             </div>
           </motion.div>
         </div>
