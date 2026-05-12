@@ -26,20 +26,18 @@ const CareerJourney = () => {
   ];
 
   return (
-    <section className="py-24 px-6 bg-light overflow-hidden">
+    <section className="pt-15 sm:py-24 px-6 bg-light overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-20">
+        <div className="sm:text-center mb-10 sm:mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-primary tracking-tighter mb-6"
+            className="text-3xl md:text-5xl font-bold text-primary tracking-tighter mb-3 sm:mb-6"
           >
             From Learning to Earning — <br />
-            <span className="text-secondary">
-              We Prepare You for Real Work
-            </span>
+            <span className="text-secondary">We Prepare You for Real Work</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -65,14 +63,14 @@ const CareerJourney = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative flex flex-col p-8 rounded-4xl bg-white border border-secondary shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 group ${
+              className={`relative flex flex-col p-5 sm:p-8 rounded-4xl bg-white border border-secondary shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 group ${
                 index % 2 === 0
                   ? "md:text-right md:items-end"
                   : "md:text-left md:items-start"
               }`}
             >
               {/* Icon Circle */}
-              <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center mb-6 group-hover:rotate-16 transition-transform duration-300 shadow-lg shadow-primary">
+              <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center mb-3 sm:mb-6 group-hover:rotate-16 transition-transform duration-300 shadow-lg shadow-primary">
                 {step.icon}
               </div>
 
@@ -89,7 +87,7 @@ const CareerJourney = () => {
               </p>
 
               {/* Decorative Step Number */}
-              {/* <span className="absolute top-8 right-8 md:right-auto md:left-auto text-6xl font-black text-primary pointer-events-none group-hover:text-accent transition-colors">
+              {/* <span className="absolute top-8 right-8 md:right-auto md:left-auto text-6xl text-primary pointer-events-none group-hover:text-accent transition-colors">
                 0{index + 1}
               </span> */}
             </motion.div>

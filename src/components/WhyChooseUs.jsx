@@ -52,7 +52,7 @@ const WhyChooseUs = () => {
     <section className="py-20 sm:py-24 px-6 bg-light overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-10">
+        <div className="sm:text-center mb-10">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -65,14 +65,12 @@ const WhyChooseUs = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.8 }}
-            className="text-primary text-4xl md:text-5xl font-bold mt-4 tracking-tight"
+            className="text-primary text-3xl md:text-5xl font-bold mt-4 tracking-tight"
           >
             Why Belleza{" "}
-            <span className="text-secondary">
-              Beauty School Rudrapur?
-            </span>
+            <span className="text-secondary">Beauty School Rudrapur?</span>
           </motion.h2>
-          <div className="w-24 h-1 bg-secondary mx-auto mt-6 rounded-full opacity-50" />
+          <div className="w-24 h-1 bg-secondary sm:mx-auto sm:mt-6 mt-3 rounded-full opacity-50" />
         </div>
 
         {/* Features Grid */}
@@ -85,13 +83,13 @@ const WhyChooseUs = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.8 }}
               whileHover={{ y: -10 }}
-              className="group bg-light p-8 rounded-4xl shadow-sm hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 border border-secondary"
+              className="group bg-light p-5 sm:p-8 rounded-4xl shadow-sm hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 border border-secondary"
             >
               <div className="w-8 h-8 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-primary text-secondary transition-colors duration-300 bg-secondary-30">
                 {item.icon}
               </div>
 
-              <h3 className="text-primary text-xl font-bold  mb-2 group-hover:text-accent transition-colors">
+              <h3 className="text-primary text-xl font-bold  sm:mb-2 mb-1 group-hover:text-accent transition-colors">
                 {item.title}
               </h3>
 

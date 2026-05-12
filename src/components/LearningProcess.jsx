@@ -49,14 +49,12 @@ const LearningProcess = () => {
   });
 
   return (
-    <section className="py-24 bg-light" ref={containerRef} id="training">
+    <section className="sm:py-24 bg-light" ref={containerRef} id="training">
       <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-primary text-4xl md:text-5xl font-bold tracking-tight">
+        <div className="sm:text-center mb-10 sm:mb-20">
+          <h2 className="text-primary text-3xl md:text-5xl font-bold tracking-tight">
             How We Help You Become{" "}
-            <span className="text-secondary font-serif">
-              Career-Ready
-            </span>
+            <span className="text-secondary">Career-Ready</span>
           </h2>
         </div>
 
@@ -90,7 +88,7 @@ const LearningProcess = () => {
                     <span className="text-secondary font-bold text-xs tracking-widest uppercase mb-2 block">
                       Step {index + 1}
                     </span>
-                    <h3 className="text-primary text-2xl font-bold mb-2 group-hover:text-accent transition-colors">
+                    <h3 className="text-primary text-xl font-bold mb-1 sm:mb-2 group-hover:text-accent transition-colors">
                       {step.title}
                     </h3>
                     <p className="text-secondary font-semibold leading-tight text-sm">

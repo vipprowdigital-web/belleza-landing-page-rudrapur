@@ -59,7 +59,7 @@ const TargetAudience = () => {
     <section className="sm:py-24 px-4 sm:px-6 bg-light">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="sm:text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -69,7 +69,7 @@ const TargetAudience = () => {
             Who Should Join <br className="sm:hidden" />
             <span className="text-secondary">Belleza Rudrapur?</span>
           </motion.h2>
-          <div className="w-20 h-1.5 bg-primary mx-auto rounded-full" />
+          <div className="w-20 h-1 bg-primary sm:mx-auto rounded-full" />
         </div>
 
         {/* Categories Grid */}
@@ -89,7 +89,7 @@ const TargetAudience = () => {
                 </div>
               </div>
 
-              <h3 className="text-lg font-black text-primary tracking-tight leading-tight group-hover:text-light transition-colors duration-500 mb-1">
+              <h3 className="text-lg font-bold text-primary tracking-tight leading-tight group-hover:text-light transition-colors duration-500 mb-1">
                 {item.title}
               </h3>
               <p className="text-sm text-secondary sm:leading-relaxed leading-tight font-medium group-hover:text-light/70 transition-colors duration-500">

@@ -6,7 +6,7 @@ const AdmissionsCTA = () => {
   return (
     <section className="relative py-24 px-6 bg-light overflow-hidden flex flex-col items-center justify-center">
       {/* Large Background Decorative Text */}
-      <div className="absolute top-30 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none">
+      <div className="sm:block hidden absolute top-30 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none">
         <h2 className="text-[9.3rem] font-bold text-secondary opacity-10 whitespace-nowrap uppercase tracking-tighter">
           Rudrapur
         </h2>
@@ -36,9 +36,7 @@ const AdmissionsCTA = () => {
         >
           Admissions Open for
           <br />
-          <span className="text-secondary font-serif">
-            Rudrapur Branch
-          </span>
+          <span className="text-secondary ">Rudrapur Branch</span>
         </motion.h2>
 
         {/* Description Body */}
@@ -47,7 +45,7 @@ const AdmissionsCTA = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-primary tracking-tighter text-xl md:text-2xl font-medium leading-tight max-w-3xl mx-auto"
+            className="text-primary tracking-tighter text-lg md:text-2xl font-medium leading-tight max-w-3xl mx-auto"
           >
             Your career in the beauty industry can begin with one decision. Join
             Belleza Beauty School Rudrapur and learn professional beauty skills
@@ -59,7 +57,7 @@ const AdmissionsCTA = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-secondary tracking-tight font-semibold text-lg leading-relaxed max-w-2xl mx-auto"
+            className="text-secondary tracking-tight font-semibold text-lg sm:leading-relaxed max-w-2xl mx-auto"
           >
             New batches are open. Limited seats available.
           </motion.p>

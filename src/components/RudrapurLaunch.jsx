@@ -5,7 +5,7 @@ const RudrapurLaunch = () => {
   return (
     <section className="relative py-24 px-6 bg-light overflow-hidden">
       {/* Decorative Background Text */}
-      <div className="absolute top-10 left-0 text-[11rem] font-black text-primary opacity-[0.07] select-none pointer-events-none whitespace-nowrap">
+      <div className="sm:block hidden absolute top-10 left-0 text-[11rem] text-primary opacity-[0.07] select-none pointer-events-none whitespace-nowrap">
         RUDRAPUR
       </div>
 
@@ -20,7 +20,7 @@ const RudrapurLaunch = () => {
               className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-secondary rounded-full"
             >
               <MapPin size={16} className="text-secondary" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">
+              <span className="text-[10px] uppercase font-black tracking-[0.3em] text-secondary">
                 Now Open in Rudrapur
               </span>
             </motion.div>
@@ -31,14 +31,14 @@ const RudrapurLaunch = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <h2 className="text-5xl md:text-7xl font-bold text-primary tracking-tighter leading-[0.95] mb-8">
+              <h2 className="text-3xl md:text-7xl font-bold text-primary tracking-tighter leading-[0.95] mb-8">
                 Professional <br />
                 Beauty Education <br />
                 <span className="text-secondary">Now in Rudrapur</span>
               </h2>
 
               <div className="space-y-6 max-w-xl">
-                <p className="text-secondary text-lg font-medium leading-relaxed">
+                <p className="text-secondary sm:text-lg font-medium leading-relaxed">
                   Students from Rudrapur and nearby areas can now learn
                   professional beauty skills in their own city. Belleza Beauty
                   School Rudrapur brings practical, premium, and career-focused
@@ -69,7 +69,7 @@ const RudrapurLaunch = () => {
                 <div className="w-20 h-20 bg-primary rounded-3xl mx-auto flex items-center justify-center shadow-2xl shadow-primary/30 rotate-12 mb-8">
                   <GraduationCap size={40} className="text-accent" />
                 </div>
-                <h4 className="text-2xl font-black text-primary leading-tight">
+                <h4 className="text-2xl text-primary leading-tight">
                   Premium Training <br /> Standardized for India
                 </h4>
               </div>
@@ -78,14 +78,14 @@ const RudrapurLaunch = () => {
               <div className="absolute bottom-10 right-0 left-0 px-8">
                 <div className="bg-white/60 backdrop-blur-xl border border-white/40 p-4 rounded-2xl shadow-xl flex items-center justify-between">
                   <div>
-                    <p className="text-[10px] font-black text-secondary uppercase tracking-tighter">
+                    <p className="text-[10px] text-secondary uppercase tracking-tighter">
                       Availability
                     </p>
                     <p className="text-primary font-bold">Limited Seats</p>
                   </div>
                   <div className="h-8 w-px bg-primary/10" />
                   <div>
-                    <p className="text-[10px] font-black text-secondary uppercase tracking-tighter">
+                    <p className="text-[10px] text-secondary uppercase tracking-tighter">
                       Next Batch
                     </p>
                     <p className="text-secondary font-bold">Enrolling Now</p>

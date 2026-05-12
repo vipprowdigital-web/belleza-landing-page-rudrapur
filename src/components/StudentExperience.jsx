@@ -81,7 +81,7 @@ const StudentExperience = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-primary tracking-tighter">
+            <h2 className="text-3xl md:text-5xl font-bold text-primary tracking-tighter">
               Student <span className="text-secondary">Experience</span>
             </h2>
             <div className="w-16 h-1 bg-primary mt-4" />
@@ -139,7 +139,7 @@ const StudentExperience = () => {
                     )}
                   </div>
                   <div>
-                    <p className="text-primary font-black text-sm uppercase tracking-wider">
+                    <p className="text-primary text-sm uppercase tracking-wider">
                       {review.name}
                     </p>
                     {review.designation && (
@@ -194,7 +194,7 @@ const StudentExperience = () => {
                         )}
                       </div>
                       <div>
-                        <p className="text-primary font-black text-sm uppercase tracking-wider">
+                        <p className="text-primary text-sm uppercase tracking-wider">
                           {review.name}
                         </p>
                         {review.designation && (

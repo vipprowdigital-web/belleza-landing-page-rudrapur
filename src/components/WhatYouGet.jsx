@@ -21,7 +21,7 @@ const benefits = [
 
 const WhatYouGet = () => {
   return (
-    <section className="py-24 sm:px-6 bg-light overflow-hidden">
+    <section className="sm:py-24 sm:px-6 bg-light overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Side: Content */}
@@ -35,13 +35,13 @@ const WhatYouGet = () => {
             <h4 className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-4">
               Your Career Journey
             </h4>
-            <h2 className="text-primary text-4xl md:text-5xl font-bold mb-8 tracking-tight">
+            <h2 className="text-primary text-3xl md:text-5xl font-bold mb-8 tracking-tight">
               What You Receive at{" "}
-              <span className="text-secondary font-serif">Belleza</span>
+              <span className="text-secondary">Belleza</span>
             </h2>
 
             {/* Benefits Grid (Inside the Left Col) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-y-4 gap-y-2 gap-x-8">
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={index}

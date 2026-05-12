@@ -1,105 +1,3 @@
-// import { motion } from "framer-motion";
-// import { Camera } from "lucide-react";
-
-// const PortfolioSection = () => {
-//   // Animation variants for staggering the text
-//   const containerVariants = {
-//     hidden: { opacity: 0 },
-//     visible: {
-//       opacity: 1,
-//       transition: {
-//         staggerChildren: 0.2,
-//         delayChildren: 0.3,
-//       },
-//     },
-//   };
-
-//   const itemVariants = {
-//     hidden: { opacity: 0, y: 30 },
-//     visible: {
-//       opacity: 1,
-//       y: 0,
-//       transition: { duration: 0.8, ease: "easeOut" },
-//     },
-//   };
-
-//   return (
-//     <section
-//       className="relative w-full py-24 px-6 bg-light overflow-hidden flex flex-col items-center justify-center text-center"
-//       id="portfolio"
-//     >
-//       {/* Decorative Background Elements */}
-//       <motion.div
-//         animate={{
-//           scale: [1, 1.2, 1],
-//           opacity: [0.3, 0.5, 0.3],
-//         }}
-//         transition={{ duration: 8, repeat: Infinity }}
-//         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-accent/10 rounded-full blur-[100px] -z-10"
-//       />
-
-//       <motion.div
-//         variants={containerVariants}
-//         initial="hidden"
-//         whileInView="visible"
-//         viewport={{ once: true, margin: "-100px" }}
-//         className="max-w-4xl"
-//       >
-//         {/* Floating Icon */}
-//         <motion.div
-//           variants={itemVariants}
-//           className="flex justify-center mb-6"
-//         >
-//           <div className="relative">
-//             <motion.div
-//               animate={{ rotate: 360 }}
-//               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-//               className="absolute inset-0 border-2 border-dashed border-secondary rounded-full scale-150"
-//             />
-//             <div className="bg-primary p-4 rounded-full shadow-2xl relative z-10">
-//               <Camera className="text-accent w-6 h-6" />
-//             </div>
-//           </div>
-//         </motion.div>
-
-//         {/* Title */}
-//         <motion.h2
-//           variants={itemVariants}
-//           className="text-primary text-3xl md:text-5xl font-bold tracking-tighter mb-8 leading-[1.1]"
-//         >
-//           Build Your <br />
-//           <span className="text-secondary font-serif">
-//             Professional Portfolio
-//           </span>
-//         </motion.h2>
-
-//         {/* Description Paragraph 1 */}
-//         <motion.p
-//           variants={itemVariants}
-//           className="text-primary text-md md:text-xl font-medium leading-tight mb-3 tracking-tighter"
-//         >
-//           A strong portfolio helps every beauty professional show their work
-//           confidently. At Belleza Beauty School Rudrapur, students get
-//           opportunities to create professional looks during their training.
-//         </motion.p>
-
-//         {/* Description Paragraph 2 */}
-//         <motion.p
-//           variants={itemVariants}
-//           className="text-secondary font-semibold text-md max-w-2xl mx-auto leading-tight tracking-tight"
-//         >
-//           From bridal looks to party makeup, hairstyling, nails, and skin
-//           services, students build practical work experience that helps them
-//           start freelancing, apply for salon jobs, and promote their services
-//           online.
-//         </motion.p>
-//       </motion.div>
-//     </section>
-//   );
-// };
-
-// export default PortfolioSection;
-
 import { motion } from "framer-motion";
 import { Camera, Briefcase } from "lucide-react";
 
@@ -122,7 +20,7 @@ const PortfolioSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-6 leading-tight">
                 Build a Portfolio That <br />
                 <span className="text-accent">Opens Opportunities</span>
               </h2>
@@ -223,13 +121,13 @@ const PortfolioSection = () => {
                   <div className="w-full h-full bg-linear-to-br from-accent/20 to-primary" />
                 </motion.div>
               </div> */}
-              <div className="space-y-4 pt-12">
+              <div className="space-y-4 pt-12 sm:pt-0">
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
-                  className="aspect-square bg-accent rounded-2xl p-6 shadow-2xl"
+                  className="aspect-square bg-accent rounded-2xl sm:p-6 p-3 sm:w-85 w-54 h-80 sm:h-120 shadow-2xl"
                 >
                   <div className="w-full h-full overflow-hidden bg-accent flex items-center justify-center">
                     <img
@@ -246,7 +144,7 @@ const PortfolioSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 }}
-                  className="aspect-4/5 rounded-3xl bg-secondary/20 border border-white/10 overflow-hidden"
+                  className="aspect-4/5 rounded-3xl border border-white/10 overflow-hidden"
                 >
                   <div className="w-full h-full bg-linear-to-br from-accent/20 to-primary" />
                 </motion.div>
@@ -266,7 +164,7 @@ const PortfolioSection = () => {
                 alt="Portfolio Image"
                 loading="lazy"
               />
-              <p className="text-primary font-black text-xl leading-tight">
+              <p className="text-primary text-xl leading-tight font-bold pt-2">
                 100+ <br />
                 <span className="text-sm uppercase tracking-tighter opacity-80 font-bold text-secondary">
                   Looks Created
@@ -281,3 +179,105 @@ const PortfolioSection = () => {
 };
 
 export default PortfolioSection;
+
+// import { motion } from "framer-motion";
+// import { Camera } from "lucide-react";
+
+// const PortfolioSection = () => {
+//   // Animation variants for staggering the text
+//   const containerVariants = {
+//     hidden: { opacity: 0 },
+//     visible: {
+//       opacity: 1,
+//       transition: {
+//         staggerChildren: 0.2,
+//         delayChildren: 0.3,
+//       },
+//     },
+//   };
+
+//   const itemVariants = {
+//     hidden: { opacity: 0, y: 30 },
+//     visible: {
+//       opacity: 1,
+//       y: 0,
+//       transition: { duration: 0.8, ease: "easeOut" },
+//     },
+//   };
+
+//   return (
+//     <section
+//       className="relative w-full py-24 px-6 bg-light overflow-hidden flex flex-col items-center justify-center text-center"
+//       id="portfolio"
+//     >
+//       {/* Decorative Background Elements */}
+//       <motion.div
+//         animate={{
+//           scale: [1, 1.2, 1],
+//           opacity: [0.3, 0.5, 0.3],
+//         }}
+//         transition={{ duration: 8, repeat: Infinity }}
+//         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-accent/10 rounded-full blur-[100px] -z-10"
+//       />
+
+//       <motion.div
+//         variants={containerVariants}
+//         initial="hidden"
+//         whileInView="visible"
+//         viewport={{ once: true, margin: "-100px" }}
+//         className="max-w-4xl"
+//       >
+//         {/* Floating Icon */}
+//         <motion.div
+//           variants={itemVariants}
+//           className="flex justify-center mb-6"
+//         >
+//           <div className="relative">
+//             <motion.div
+//               animate={{ rotate: 360 }}
+//               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+//               className="absolute inset-0 border-2 border-dashed border-secondary rounded-full scale-150"
+//             />
+//             <div className="bg-primary p-4 rounded-full shadow-2xl relative z-10">
+//               <Camera className="text-accent w-6 h-6" />
+//             </div>
+//           </div>
+//         </motion.div>
+
+//         {/* Title */}
+//         <motion.h2
+//           variants={itemVariants}
+//           className="text-primary text-3xl md:text-5xl font-bold tracking-tighter mb-8 leading-[1.1]"
+//         >
+//           Build Your <br />
+//           <span className="text-secondary ">
+//             Professional Portfolio
+//           </span>
+//         </motion.h2>
+
+//         {/* Description Paragraph 1 */}
+//         <motion.p
+//           variants={itemVariants}
+//           className="text-primary text-md md:text-xl font-medium leading-tight mb-3 tracking-tighter"
+//         >
+//           A strong portfolio helps every beauty professional show their work
+//           confidently. At Belleza Beauty School Rudrapur, students get
+//           opportunities to create professional looks during their training.
+//         </motion.p>
+
+//         {/* Description Paragraph 2 */}
+//         <motion.p
+//           variants={itemVariants}
+//           className="text-secondary font-semibold text-md max-w-2xl mx-auto leading-tight tracking-tight"
+//         >
+//           From bridal looks to party makeup, hairstyling, nails, and skin
+//           services, students build practical work experience that helps them
+//           start freelancing, apply for salon jobs, and promote their services
+//           online.
+//         </motion.p>
+//       </motion.div>
+//     </section>
+//   );
+// };
+
+// export default PortfolioSection;

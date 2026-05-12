@@ -211,7 +211,7 @@ const LeadForm = ({ address, phone }) => {
   return (
     <section
       id="contact"
-      className="relative w-full overflow-hidden bg-linear-to-br px-2 pt-20 sm:py-20 md:px-8"
+      className="relative w-full overflow-hidden bg-linear-to-br px-2 pt-10 sm:py-20 md:px-8"
     >
       {/* Decorative blobs */}
       {/* <div className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 rounded-full bg-secondary blur-3xl" />
@@ -222,18 +222,15 @@ const LeadForm = ({ address, phone }) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-12 text-center"
+        className="mb-12 mx-4 sm:text-center"
       >
         <p className="mb-2.5 text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-secondary">
           ✦ Enroll Today ✦
         </p>
-        <h2 className="text-4xl font-bold tracking-tight text-primary md:text-5xl">
-          Begin Your{" "}
-          <span className="text-secondary font-serif">
-            Beauty Journey
-          </span>
+        <h2 className="text-3xl font-bold tracking-tight text-primary md:text-5xl">
+          Begin Your <span className="text-secondary">Beauty Journey</span>
         </h2>
-        <div className="mx-auto mt-4 h-0.5 w-16 bg-linear-to-r from-transparent via-[#826955] to-transparent" />
+        <div className="sm:mx-auto mt-4 h-0.5 w-16 bg-linear-to-r from-transparent via-[#826955] to-transparent" />
       </motion.div>
       {/* Main card */}
       <motion.div
@@ -243,11 +240,8 @@ const LeadForm = ({ address, phone }) => {
         transition={{ duration: 0.7, delay: 0.1 }}
         className="mx-auto flex max-w-5xl flex-col overflow-hidden rounded-3xl shadow-2xl shadow-amber-900/10 md:flex-row"
       >
-        {/* ── Left panel ── */}
-        <div className="relative flex flex-col justify-between overflow-hidden bg-linear-to-br from-[#826955] to-[#826955] px-5 py-5 md:w-2/5 md:px-10 md:py-14">
-          {/* Right border line */}
+        <div className="relative flex flex-col justify-between overflow-hidden bg-primary px-5 py-5 md:w-2/5 md:px-10 md:py-14">
           <div className="absolute inset-y-0 right-0 w-px bg-linear-to-b from-transparent via-[#fddfbf] to-transparent" />
-          {/* Gold glow */}
           <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-amber-500/10 blur-2xl" />
 
           <div>
@@ -260,7 +254,7 @@ const LeadForm = ({ address, phone }) => {
               <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-light">
                 Free Counselling
               </p>
-              <h3 className="mb-4 font-serif text-3xl font-black leading-tight tracking-tight text-light md:text-4xl">
+              <h3 className="mb-4 text-2xl leading-tight tracking-tight text-light md:text-4xl font-bold">
                 Get Admission & Course Details
               </h3>
               <p className="text-md font-light leading-relaxed text-light">
@@ -276,12 +270,14 @@ const LeadForm = ({ address, phone }) => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="mt-5 sm:mt-8 space-y-1 sm:space-y-3"
+              className="sm:block hidden mt-5 sm:mt-8 space-y-1 sm:space-y-3"
             >
               {features.map((item) => (
                 <li key={item} className="flex items-center gap-3">
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  <span className="text-md font-light text-accent">{item}</span>
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-light" />
+                  <span className="text-md font-semibold text-light">
+                    {item}
+                  </span>
                 </li>
               ))}
             </motion.ul>
@@ -293,7 +289,7 @@ const LeadForm = ({ address, phone }) => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.7 }}
-            className="mt-5 sm:mt-10"
+            className="sm:block hidden mt-5 sm:mt-10"
           >
             <div className="mb-4 h-px bg-accent" />
             <ul className="space-y-2">
@@ -329,7 +325,7 @@ const LeadForm = ({ address, phone }) => {
                 >
                   ✓
                 </motion.div>
-                <h3 className="font-serif text-3xl font-bold text-primary">
+                <h3 className=" text-3xl font-bold text-primary">
                   We'll Be in Touch!
                 </h3>
                 <p className="max-w-xs text-sm leading-relaxed text-secondary">
@@ -451,9 +447,7 @@ const LeadForm = ({ address, phone }) => {
                           : "text-stone-900"
                       }`}
                     >
-                      <option value="" disabled>
-                        Select Location
-                      </option>
+                      <option value="">Select Location</option>
                       {locations.map(({ value, label }) => (
                         <option key={value} value={value}>
                           {label}

@@ -50,7 +50,7 @@ export default function About() {
                 <h4 className="text-secondary font-bold tracking-[0.2em] uppercase text-sm mb-2">
                   Empowering Your Passion
                 </h4>
-                <h2 className="font-bold tracking-tighter text-primary text-4xl md:text-5xl leading-tight">
+                <h2 className="font-bold tracking-tighter text-primary text-3xl md:text-5xl leading-tight">
                   Professional Beauty Training{" "}
                   <span className="text-secondary">for Ambitious Learners</span>
                 </h2>

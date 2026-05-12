@@ -47,26 +47,24 @@ const careerPaths = [
 
 const CareerOpportunities = () => {
   return (
-    <section className="py-15 px-4 sm:px-6 bg-light" id="career">
+    <section className="pt-15 sm:py-15 px-4 sm:px-6 bg-light" id="career">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-7 sm:mb-16">
+        <div className="sm:text-center mb-7 sm:mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-primary text-4xl md:text-5xl font-bold tracking-tight mb-2"
+            className="text-primary text-3xl md:text-5xl font-bold tracking-tight mb-2"
           >
             What Can You Become{" "}
-            <span className="text-secondary font-serif">
-              After Training?
-            </span>
+            <span className="text-secondary ">After Training?</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-secondary tracking-tighter leading-tight font-semibold max-w-2xl mx-auto text-lg"
+            className="text-secondary tracking-tighter leading-tight font-semibold max-w-2xl mx-auto text-md"
           >
             After completing your course from Belleza Rudrapur, you can start
             your journey as

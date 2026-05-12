@@ -23,6 +23,13 @@ const Navbar = () => {
     { name: "FAQ", href: "#faqs" },
   ];
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <nav
       className={`fixed top-0 w-full z-100 transition-all duration-500 ${
@@ -32,7 +39,7 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <motion.div>
+        <motion.div onClick={scrollToTop}>
           <img
             src="/assets/images/logos/belleza_logo.svg"
             alt="Belleza Logo"
@@ -106,7 +113,7 @@ const Navbar = () => {
                 <Phone /> 90123 60088
               </a> */}
               <button
-                className="bg-accent text-primary px-10 py-4 rounded-full font-black text-lg"
+                className="bg-accent text-primary px-10 py-4 rounded-full text-lg"
                 onClick={() => {
                   scrollTo("contact");
                   setIsOpen(false);

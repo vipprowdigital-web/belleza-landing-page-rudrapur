@@ -5,8 +5,8 @@ import { scrollTo } from "../utils/scrollTo";
 const FinalCTA = ({ address, phone }) => {
   return (
     <section className="py-20 bg-light relative overflow-hidden">
-      <div className="max-w-8xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="w-full sm:max-w-8xl mx-auto">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content Column */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -17,9 +17,7 @@ const FinalCTA = ({ address, phone }) => {
             <div>
               <h2 className="text-primary text-3xl md:text-5xl font-bold tracking-tighter leading-tight mb-3">
                 Begin Your Beauty Journey with <br />
-                <span className="text-secondary font-serif">
-                  Belleza Rudrapur
-                </span>
+                <span className="text-secondary ">Belleza Rudrapur</span>
               </h2>
               <p className="text-secondary text-md md:text-lg leading-tight max-w-xl">
                 Learn professional beauty skills, practice with expert guidance,
@@ -62,7 +60,7 @@ const FinalCTA = ({ address, phone }) => {
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-secondary font-bold">
+                  <p className="text-[10px] uppercase tracking-widest text-secondary font-bold mb-1">
                     Phone
                   </p>
                   <p className="text-primary font-bold text-lg leading-none">
@@ -76,11 +74,11 @@ const FinalCTA = ({ address, phone }) => {
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-secondary font-bold">
+                  <p className="text-[10px] uppercase tracking-widest text-secondary font-bold mb-1">
                     Address
                   </p>
                   {address && address[0] && (
-                    <p className="text-secondary font-semibold text-sm leading-relaxed max-w-sm">
+                    <p className="text-secondary font-semibold text-sm sm:leading-relaxed max-w-sm">
                       {address[0]?.address}
                     </p>
                   )}
@@ -94,16 +92,16 @@ const FinalCTA = ({ address, phone }) => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="w-full relative"
           >
             {/* Geometric Background Element */}
             <div className="absolute -inset-4 translate-x-4 translate-y-4 -z-10" />
 
-            <div className="aspect-3/3 overflow-hidden relative group">
+            <div className="w-full aspect-3/3 overflow-hidden relative group sm:rounded-none rounded-3xl">
               <img
                 src="https://res.cloudinary.com/dt5azqjuz/image/upload/f_auto,q_auto/BRIDAL_sboc55.png"
                 alt="Professional Beauty Training"
-                className="w-full h-full object-contain grayscale-70 group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                className="w-full h-full object-contain grayscale-70 group-hover:grayscale-0 transition-all duration-700 sm:rounded-none rounded-3xl group-hover:scale-105"
                 loading="lazy"
               />
               {/* Overlay Gradient */}

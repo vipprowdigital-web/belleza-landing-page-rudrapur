@@ -29,7 +29,7 @@
 //       {/* Content Side */}
 //       <div className="md:w-2/3 p-8 md:p-12 space-y-8">
 //         <div>
-//           <p className="text-secondary text-lg leading-relaxed italic font-semibold">
+//           <p className="text-secondary text-lg leading-relaxed font-semibold">
 //             "{description}"
 //           </p>
 //         </div>
@@ -165,7 +165,7 @@ const CourseCard = ({ title, description, learningPoints, careerOptions }) => {
 
       {/* Content */}
       <div className="w-full md:w-2/3 p-5 sm:p-6 md:p-10 space-y-6 sm:space-y-8">
-        <p className="text-secondary text-sm sm:text-base md:text-lg leading-relaxed italic font-semibold">
+        <p className="text-secondary text-sm sm:text-base md:text-lg leading-relaxed font-semibold">
           "{description}"
         </p>
 
@@ -227,8 +227,7 @@ const ProfessionalCourses = () => {
         {/* Heading */}
         <div className="text-center mb-10">
           <h2 className="text-primary text-4xl md:text-5xl font-bold mb-3 sm:mb-4 tracking-tight">
-            Our Professional{" "}
-            <span className="text-secondary italic font-serif">Courses</span>
+            Our Professional <span className="text-secondary">Courses</span>
           </h2>
 
           <p className="text-secondary uppercase tracking-widest text-[10px] sm:text-xs font-bold">

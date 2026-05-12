@@ -87,15 +87,15 @@ export default function Courses() {
 
   return (
     <section className="w-full" id="courses">
-      <div className="text-center mb-10 mt-30">
+      <div className="sm:text-center mx-4 mb-5 sm:mb-10 mt-20 sm:mt-30">
         <p className="text-secondary uppercase tracking-widest text-[10px] sm:text-xs font-bold">
           Explore & Enroll
         </p>
-        <h2 className="text-primary text-4xl md:text-5xl font-bold mb-3 sm:mb-4 tracking-tight">
-          Featured <span className="text-secondary font-serif">Courses</span>
+        <h2 className="text-primary text-4xl md:text-5xl font-bold sm:mb-4 tracking-tight">
+          Featured <span className="text-secondary ">Courses</span>
         </h2>
 
-        <p className="text-secondary capitalize tracking-tight text-sm sm:text-lg px-3 sm:max-w-2xl text-center mx-auto">
+        <p className="sm:block hidden text-secondary capitalize tracking-tight text-sm sm:text-lg px-3 sm:max-w-2xl text-center mx-auto">
           Our globally recognized curriculum and career-focused approach help
           students master beauty skills and confidently step into the
           professional industry.
