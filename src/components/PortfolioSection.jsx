@@ -9,7 +9,10 @@ const PortfolioSection = () => {
   ];
 
   return (
-    <section className="py-24 px-6 bg-primary text-light overflow-hidden">
+    <section
+      className="py-24 px-6 bg-primary text-light overflow-hidden"
+      id="portfolio"
+    >
       <div className="mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Side: Content */}

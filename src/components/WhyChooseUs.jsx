@@ -83,7 +83,7 @@ const WhyChooseUs = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.8 }}
               whileHover={{ y: -10 }}
-              className="group bg-light p-5 sm:p-8 rounded-4xl shadow-sm hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 border border-secondary"
+              className="group bg-white p-5 sm:p-8 rounded-4xl shadow-sm hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 border border-secondary"
             >
               <div className="w-8 h-8 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-primary text-secondary transition-colors duration-300 bg-secondary-30">
                 {item.icon}

@@ -100,7 +100,7 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-light uppercase text-xl font-semibold hover:text-accent transition-colors"
+                className="text-light uppercase text-sm font-semibold hover:text-accent transition-colors"
               >
                 {link.name}
               </a>
@@ -113,7 +113,7 @@ const Navbar = () => {
                 <Phone /> 90123 60088
               </a> */}
               <button
-                className="bg-accent text-primary px-10 py-4 rounded-full text-lg"
+                className="bg-accent text-primary px-7 py-3 rounded-full text-md font-bold"
                 onClick={() => {
                   scrollTo("contact");
                   setIsOpen(false);

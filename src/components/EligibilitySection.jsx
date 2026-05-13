@@ -64,7 +64,7 @@ const TargetAudience = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-primary tracking-tighter mb-4"
+            className="text-3xl md:text-5xl font-bold text-primary tracking-tighter mb-4"
           >
             Who Should Join <br className="sm:hidden" />
             <span className="text-secondary">Belleza Rudrapur?</span>

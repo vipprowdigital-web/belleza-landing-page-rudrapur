@@ -50,8 +50,8 @@ const WhatYouGet = () => {
                   transition={{ delay: index * 0.05 }}
                   className="flex items-center gap-3 group"
                 >
-                  <div className="shrink-0 w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent transition-colors duration-300">
-                    <Check className="w-3.5 h-3.5 text-secondary group-hover:text-primary transition-colors" />
+                  <div className="shrink-0 w-6 h-6 rounded-full bg-accent flex items-center justify-center group-hover:bg-accent transition-colors duration-300">
+                    <Check className="w-3.5 h-3.5 text-primary group-hover:text-primary transition-colors" />
                   </div>
                   <span className="text-secondary font-medium text-sm md:text-base tracking-tight">
                     {benefit}
