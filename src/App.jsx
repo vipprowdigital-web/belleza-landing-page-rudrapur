@@ -1,4 +1,4 @@
-import "./App.css";
+// import "./App.css";
 import About from "./components/About";
 import HeroSection from "./components/HeroSection";
 import LeadForm from "./components/LeadForm";
@@ -25,6 +25,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [appConfig, setAppConfig] = useState([]);
+  const [gallery, setGallery] = useState([]);
 
   useEffect(() => {
     const fetchAppConfig = async () => {
@@ -33,11 +34,11 @@ function App() {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });
-        console.log("Response: ", response);
+        // console.log("Response: ", response);
 
         if (response.ok) {
           const data = await response.json();
-          console.log("Response DATA: ", data.data);
+          // console.log("Response DATA: ", data.data);
           setAppConfig(data.data);
         } else {
           console.error("Couldn't fetch testimonies.");
@@ -49,16 +50,47 @@ function App() {
     fetchAppConfig();
   }, []);
 
+  useEffect(() => {
+    const fetchGalleryImages = async () => {
+      try {
+        const response = await fetch(`${baseUrl}/gallery/active`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        // console.log("Response: ", response);
+
+        if (response.ok) {
+          const data = await response.json();
+          // console.log("Response DATA: ", data.data);
+          setGallery(data.data);
+        } else {
+          console.error("Couldn't fetch gallery images.");
+        }
+      } catch {
+        console.error("Error while fetching gallery images.");
+      }
+    };
+    fetchGalleryImages();
+  }, []);
+
+  const hero = gallery.find((gal) => gal.category === "hero-section");
+  const about = gallery.find((gal) => gal.category === "about-section");
+  // const whatYouGet = gallery.find(
+  //   (gal) => gal.category === "what-you-get-section",
+  // );
+  // const portfolio = gallery.find((gal) => gal.category === "portfolio-section");
+  const finalCta = gallery.find((gal) => gal.category === "final-cta-section");
+
   return (
     <div className="flex flex-col justify-center items-center bg-light">
       <Navbar />
-      <HeroSection phone={appConfig.phoneNumber} />
+      <HeroSection phone={appConfig.phoneNumber} hero={hero} />
       <Courses />
       <LeadForm
         address={appConfig.companyAddress}
         phone={appConfig.phoneNumber}
       />
-      <About />
+      <About about={about} />
       <LearningProcess />
       <CareerJourney />
       <WhyChooseUs />
@@ -74,6 +106,7 @@ function App() {
       <FinalCTA
         address={appConfig.companyAddress}
         phone={appConfig.phoneNumber}
+        finalCta={finalCta}
       />
       <Footer appConfig={appConfig} />
     </div>

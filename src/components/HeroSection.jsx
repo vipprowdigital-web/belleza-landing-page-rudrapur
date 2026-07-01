@@ -135,13 +135,13 @@ const HeroImage = () => (
     className="relative aspect-4/5 w-full"
   >
     <div className="absolute inset-0 bg-linear-to-br from-primary to-secondary rounded-[4rem] overflow-hidden shadow-3xl">
-      <div className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat bg-[url('/assets/images/makeup-sessions.jpg')]" />
+      <div className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat bg-[url('/assets/images/image-1.jpg')]" />
       <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-12 text-light z-20">
         <div className="space-y-2 mb-5">
           <p className="text-light tracking-[0.3em] uppercase text-xs">
             Practical Training
           </p>
-          <h3 className="sm:text-3xl text-accent font-bold leading-tight">
+          <h3 className="sm:text-3xl text-primary font-bold leading-tight">
             Live Model <br /> Practice Sessions
           </h3>
         </div>

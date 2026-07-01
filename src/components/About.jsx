@@ -22,7 +22,7 @@ export default function About() {
 
               <div className="relative h-full rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/assets/images/training-sessions.jpg"
+                  src="/assets/images/image-3.jpg"
                   alt="Belleza Beauty School Training"
                   className="w-full h-full object-cover"
                   loading="lazy"

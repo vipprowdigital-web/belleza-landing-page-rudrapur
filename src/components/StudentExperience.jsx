@@ -15,11 +15,11 @@ const StudentExperience = () => {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });
-        console.log("Response: ", response);
+        // console.log("Response: ", response);
 
         if (response.ok) {
           const data = await response.json();
-          console.log("Response DATA: ", data.data);
+          // console.log("Response DATA: ", data.data);
           setTestimonials(data.data);
         } else {
           console.error("Couldn't fetch testimonies.");
