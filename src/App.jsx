@@ -9,6 +9,7 @@ import WhyChooseUs from "./components/WhyChooseUs";
 import LearningProcess from "./components/LearningProcess";
 import WhatYouGet from "./components/WhatYouGet";
 import PortfolioSection from "./components/PortfolioSection";
+import Gallery from "./components/Gallery";
 import CareerOpportunities from "./components/CareerOpportunities";
 import EligibilitySection from "./components/EligibilitySection";
 import AdmissionsCTA from "./components/AdmissionsCTA";
@@ -73,30 +74,24 @@ function App() {
     fetchGalleryImages();
   }, []);
 
-  const hero = gallery.find((gal) => gal.category === "hero-section");
-  const about = gallery.find((gal) => gal.category === "about-section");
-  // const whatYouGet = gallery.find(
-  //   (gal) => gal.category === "what-you-get-section",
-  // );
-  // const portfolio = gallery.find((gal) => gal.category === "portfolio-section");
-  const finalCta = gallery.find((gal) => gal.category === "final-cta-section");
-
   return (
     <div className="flex flex-col justify-center items-center bg-light">
       <Navbar />
-      <HeroSection phone={appConfig.phoneNumber} hero={hero} />
+      <HeroSection phone={appConfig.phoneNumber} />
       <Courses />
       <LeadForm
         address={appConfig.companyAddress}
         phone={appConfig.phoneNumber}
+        email={appConfig?.email}
       />
-      <About about={about} />
+      <About />
       <LearningProcess />
       <CareerJourney />
       <WhyChooseUs />
       {/* <ProfessionalCourses /> */}
       <WhatYouGet />
       <PortfolioSection />
+      <Gallery gallery={gallery} />
       <CareerOpportunities />
       <RudrapurLaunch />
       <EligibilitySection />
@@ -106,7 +101,6 @@ function App() {
       <FinalCTA
         address={appConfig.companyAddress}
         phone={appConfig.phoneNumber}
-        finalCta={finalCta}
       />
       <Footer appConfig={appConfig} />
     </div>

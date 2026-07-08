@@ -134,7 +134,7 @@ const PortfolioSection = () => {
                 >
                   <div className="w-full h-full overflow-hidden bg-accent flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/dt5azqjuz/image/upload/f_auto,q_auto/Glam_Look_l1usvm.png"
+                      src="/assets/images/image-2.jpeg"
                       alt="Portfolio Image"
                       className="w-full h-full object-cover"
                       loading="lazy"
@@ -160,12 +160,15 @@ const PortfolioSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.8 }}
-              className="absolute -bottom-8 -left-8 md:bottom-0 md:-left-4 bg-accent p-6 rounded-2xl shadow-2xl rotate-[-4deg]"
+              className="absolute -bottom-8 -left-8 md:bottom-0 md:-left-4 bg-accent p-4 sm:p-6 rounded-2xl shadow-2xl rotate-[-4deg]"
             >
               <img
-                src="https://res.cloudinary.com/dt5azqjuz/image/upload/f_auto,q_auto/eye_makeup_mfwkif.png"
+                src="/assets/images/image-5.jpeg"
                 alt="Portfolio Image"
                 loading="lazy"
+                width={100}
+                height={100}
+                className="w-100 sm:h-130 rounded-lg object-cover"
               />
               <p className="text-primary text-xl leading-tight font-bold pt-2">
                 100+ <br />

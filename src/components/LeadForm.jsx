@@ -151,7 +151,7 @@ const itemVariants = {
 };
 
 // ─── Component ─────────────────────────────────────────────────────────────────
-const LeadForm = ({ address, phone }) => {
+const LeadForm = ({ address, phone, email }) => {
   const [formData, setFormData] = useState(initialData);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
@@ -173,7 +173,7 @@ const LeadForm = ({ address, phone }) => {
     },
     {
       Icon: Link,
-      text: "www.bellezaschool.com",
+      text: email ?? "schoolbelleza@gmail.com",
     },
   ].filter(Boolean);
 

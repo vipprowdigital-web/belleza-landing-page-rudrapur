@@ -99,7 +99,7 @@ const FinalCTA = ({ address, phone }) => {
 
             <div className="w-full aspect-3/3 overflow-hidden relative group sm:rounded-none rounded-3xl">
               <img
-                src="https://res.cloudinary.com/dt5azqjuz/image/upload/f_auto,q_auto/BRIDAL_sboc55.png"
+                src="/assets/images/image-6.jpeg"
                 alt="Professional Beauty Training"
                 className="w-full h-full object-contain grayscale-70 group-hover:grayscale-0 transition-all duration-700 sm:rounded-none rounded-3xl group-hover:scale-105"
                 loading="lazy"

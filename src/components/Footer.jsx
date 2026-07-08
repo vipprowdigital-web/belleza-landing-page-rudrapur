@@ -177,10 +177,10 @@ const Footer = ({ appConfig }) => {
               <div className="flex items-center gap-3">
                 <Globe className="w-5 h-5 text-accent shrink-0" />
                 <a
-                  href="https://bellezaschool.com"
+                  href={`mailto:${appConfig?.email}`}
                   className="text-sm text-light/70 underline underline-offset-4 decoration-accent/30 hover:text-accent cursor-pointer"
                 >
-                  www.bellezaschool.com
+                  {appConfig?.email}
                 </a>
               </div>
             </div>
