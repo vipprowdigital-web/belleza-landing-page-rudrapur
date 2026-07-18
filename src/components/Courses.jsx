@@ -44,11 +44,21 @@ export default function Courses() {
   }, []);
 
   const filteredCourses = allCourses.filter((course) => {
-    const typeMatch = active === "offline";
+    // const typeMatch = active === "offline";
 
+    // const categoryMatch =
+    //   activeSubCategory === "All" ||
+    //   course.category?._id === activeSubCategory._id;
+
+    // return typeMatch && categoryMatch;
+    const courseType = course.type || "offline";
+    const typeMatch = active === courseType;
+
+    // 2. Safe string match evaluation across identical standard IDs
     const categoryMatch =
       activeSubCategory === "All" ||
-      course.category?._id === activeSubCategory._id;
+      (course.category?._id &&
+        String(course.category._id) === String(activeSubCategory._id));
 
     return typeMatch && categoryMatch;
   });
