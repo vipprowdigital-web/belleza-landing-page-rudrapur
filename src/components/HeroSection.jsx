@@ -141,7 +141,7 @@ const HeroImage = () => (
           <p className="text-light tracking-[0.3em] uppercase text-xs">
             Practical Training
           </p>
-          <h3 className="sm:text-3xl text-primary font-bold leading-tight">
+          <h3 className="sm:text-3xl text-tertiary font-bold leading-tight">
             Live Model <br /> Practice Sessions
           </h3>
         </div>
