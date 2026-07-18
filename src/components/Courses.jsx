@@ -8,7 +8,6 @@ import { baseUrl } from "../utils/baseUrl";
 
 export default function Courses() {
   const [active, setActive] = useState("offline");
-  // Changed to store the category object or "All"
   const [activeSubCategory, setActiveSubCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(0);
   const [cardsPerPage, setCardsPerPage] = useState(3);
@@ -54,9 +53,29 @@ export default function Courses() {
     return typeMatch && categoryMatch;
   });
 
+  // Helper utility to convert the HTML string into an array of distinct items
+  const parseDescriptionToArray = (htmlString) => {
+    if (!htmlString) return [];
+
+    // 1. Remove HTML tags using a regex
+    const cleanText = htmlString.replace(/<\/?[^>]+(>|$)/g, "");
+
+    // 2. Decode common HTML entities like &amp;
+    const decodedText = cleanText
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">");
+
+    // 3. Split by periods followed by a space to create distinct list points, filtering out empty items
+    return decodedText
+      .split(/\.\s+/)
+      .map((sentence) => sentence.trim())
+      .filter((sentence) => sentence.length > 0)
+      .map((sentence) => (sentence.endsWith(".") ? sentence : sentence + "."));
+  };
+
   const isSlider = filteredCourses.length > cardsPerPage;
   const totalPages = Math.ceil(filteredCourses.length / cardsPerPage);
-
   const safePage = currentPage >= totalPages ? 0 : currentPage;
 
   const visibleCourses = isSlider
@@ -77,7 +96,7 @@ export default function Courses() {
           Explore & Enroll
         </p>
         <h2 className="text-primary text-3xl md:text-5xl font-bold sm:mb-4 tracking-tight">
-          Featured <span className="text-secondary ">Courses</span>
+          Featured <span className="text-secondary">Courses</span>
         </h2>
         <p className="sm:block hidden text-secondary capitalize tracking-tight text-sm sm:text-lg px-3 sm:max-w-2xl text-center mx-auto">
           Our globally recognized curriculum and career-focused approach help
@@ -144,112 +163,120 @@ export default function Courses() {
         {active === "offline" ? (
           <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-7 lg:gap-10 place-items-center md:place-items-start gap-10">
             <AnimatePresence mode="wait">
-              {visibleCourses.map((course, index) => (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  key={course._id}
-                  className="group bg-white flex flex-col rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-secondary h-full w-full"
-                >
-                  <div className="relative h-64 w-full overflow-hidden group">
-                    <img
-                      src={course.thumbnail || "/assets/images/bg-img.jpg"}
-                      alt={course.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute top-5 left-5 px-4 py-1.5 bg-secondary backdrop-blur-md border border-white/30 rounded-full flex flex-row justify-center items-center">
-                      <span className="text-light text-[10px] font-bold uppercase tracking-[0.2em]">
-                        {course.category?.name}
-                      </span>
-                    </div>
-                    {course.level && (
-                      <span
-                        className={`absolute bottom-0 right-0 px-5 py-1.5 rounded-tl-full text-xs font-semibold uppercase transition-all duration-500 ease-out opacity-0  translate-y-4 group-hover:opacity-100  group-hover:translate-y-0 ${course.level.toLowerCase() === "beginner" ? "text-green-700 bg-green-100" : course.level.toLowerCase() === "intermediate" ? "text-orange-700 bg-orange-100" : "text-red-700 bg-red-100"} `}
-                      >
-                        {course.level}
-                      </span>
-                    )}
-                  </div>
+              {visibleCourses.map((course, index) => {
+                const points = parseDescriptionToArray(course.description);
 
-                  <div className="w-full flex flex-col grow p-6 lg:px-4">
-                    {/* <div className="flex justify-between items-center mb-4">
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, j) => (
-                          <Star
-                            key={j}
-                            size={14}
-                            className="fill-amber-500 text-amber-500"
-                          />
-                        ))}
-                        <span className="text-xs font-bold text-secondary ml-1">
-                          (5.0)
+                return (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    key={course._id}
+                    className="group bg-white flex flex-col rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-secondary h-full w-full"
+                  >
+                    {/* Image / Aesthetic Header Section */}
+                    <div className="relative h-64 w-full bg-primary flex items-center justify-center overflow-hidden">
+                      {course.thumbnail ? (
+                        <img
+                          src={course.thumbnail}
+                          alt={course.title || "Course Thumbnail"}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                      ) : (
+                        <img
+                          src="/assets/images/logos/belleza_logo.svg"
+                          alt="Belleza Logo"
+                          className="w-48 h-auto opacity-80 object-contain"
+                        />
+                      )}
+
+                      <div className="absolute top-5 left-5 px-4 py-1.5 bg-secondary backdrop-blur-md border border-white/30 rounded-full flex flex-row justify-center items-center">
+                        <span className="text-light text-[10px] font-bold uppercase tracking-[0.2em]">
+                          {course.category?.name}
                         </span>
                       </div>
-                    </div> */}
 
-                    <div className="space-y-3 mb-3">
-                      <h2 className="font-bold text-xl text-primary tracking-tight leading-tight group-hover:text-secondary transition-colors">
-                        {course.title}
-                      </h2>
-                      <p className="text-sm text-secondary/70 leading-relaxed line-clamp-2">
-                        {course.short_description}
-                      </p>
+                      {course.level && (
+                        <span
+                          className={`absolute bottom-0 right-0 px-5 py-1.5 rounded-tl-full text-xs font-semibold uppercase transition-all duration-500 ease-out opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 ${
+                            course.level.toLowerCase() === "beginner"
+                              ? "text-green-700 bg-green-100"
+                              : course.level.toLowerCase() === "intermediate"
+                                ? "text-orange-700 bg-orange-100"
+                                : "text-red-700 bg-red-100"
+                          }`}
+                        >
+                          {course.level}
+                        </span>
+                      )}
                     </div>
-                    <ul className="space-y-3 mb-3 grow">
-                      {course.description
-                        .replace(/<\/?(p|strong)>/g, "")
-                        .trim()
-                        .split(".")
-                        .filter((sum) => sum.trim() !== "")
-                        .map((sum) => (
+
+                    {/* Body Text Content Card */}
+                    <div className="w-full flex flex-col grow p-6 lg:px-4">
+                      <div className="space-y-3 mb-3">
+                        <h2 className="font-bold text-xl text-primary tracking-tight leading-tight group-hover:text-secondary transition-colors">
+                          {course.title}
+                        </h2>
+                        <p className="text-sm text-secondary/70 leading-relaxed line-clamp-2">
+                          {course.short_description}
+                        </p>
+                      </div>
+
+                      {/* Clean HTML Rendered Description List */}
+                      <ul className="space-y-3 mb-3 grow">
+                        {points.slice(0, 3).map((sum, pointIdx) => (
                           <li
-                            key={sum}
+                            key={`${pointIdx}-${sum}`}
                             className="text-[13px] text-primary font-medium flex items-start gap-3"
                           >
                             <div className="mt-1 w-4 h-4 rounded-full bg-accent flex items-center justify-center shrink-0">
                               <div className="w-1.5 h-1.5 bg-secondary rounded-full" />
                             </div>
-                            {sum}
+                            <span>{sum}</span>
                           </li>
                         ))}
-                    </ul>
+                      </ul>
 
-                    <div className="w-full space-y-2 mb-3 text-sm text-secondary font-medium mt-auto flex flex-row justify-between items-center">
-                      {course.price && (
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-lg font-bold text-primary">
-                            ₹{course.sale_price.toLocaleString()}
-                          </span>
-                          <span className="line-through text-xs text-secondary/60">
-                            ₹{course.price.toLocaleString()}
-                          </span>
-                        </div>
-                      )}
-                      {course.duration && (
-                        <p className="tracking-[0.2rem] font-bold">
-                          {course.duration.toLowerCase().replace("weeks", "")}{" "}
-                          weeks
-                        </p>
-                      )}
+                      {/* Pricing & Duration Line */}
+                      <div className="w-full space-y-2 mb-3 text-sm text-secondary font-medium mt-auto flex flex-row justify-between items-center">
+                        {course.price && (
+                          <div className="flex items-baseline gap-2">
+                            <span className="text-lg font-bold text-primary">
+                              ₹{course.sale_price?.toLocaleString("en-IN")}
+                            </span>
+                            <span className="line-through text-xs text-secondary/60">
+                              ₹{course.price?.toLocaleString("en-IN")}
+                            </span>
+                          </div>
+                        )}
+                        {course.duration && (
+                          <p className="tracking-[0.2rem] font-bold">
+                            {course.duration
+                              .toLowerCase()
+                              .replace("weeks", "")
+                              .trim()}{" "}
+                            weeks
+                          </p>
+                        )}
+                      </div>
+
+                      <button
+                        className="relative w-full overflow-hidden bg-primary text-light py-3 rounded-xl font-bold transition-all hover:bg-secondary group/btn"
+                        onClick={() => scrollTo("contact")}
+                      >
+                        <span className="flex items-center justify-center gap-2">
+                          Enroll Now{" "}
+                          <ArrowRight
+                            size={18}
+                            className="group-hover/btn:translate-x-1 transition-transform"
+                          />
+                        </span>
+                      </button>
                     </div>
-
-                    <button
-                      className="relative w-full overflow-hidden bg-primary text-light py-3 rounded-xl font-bold transition-all hover:bg-secondary group/btn"
-                      onClick={() => scrollTo("contact")}
-                    >
-                      <span className="flex items-center justify-center gap-2">
-                        Enroll Now{" "}
-                        <ArrowRight
-                          size={18}
-                          className="group-hover/btn:translate-x-1 transition-transform"
-                        />
-                      </span>
-                    </button>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </AnimatePresence>
             {visibleCourses.length === 0 && (
               <p className="col-span-full mx-auto text-center text-secondary py-10">
@@ -279,7 +306,6 @@ const CourseCategories = ({ activeCategory, setCategory }) => {
         const response = await fetch(`${baseUrl}/categories/public`);
         if (response.ok) {
           const data = await response.json();
-          // Prepend "All" option to the fetched list
           setAllCategories([{ _id: "all", name: "All" }, ...data.data]);
         }
       } catch (err) {
@@ -314,6 +340,323 @@ const CourseCategories = ({ activeCategory, setCategory }) => {
     </section>
   );
 };
+
+// "use client";
+
+// import { useState, useEffect } from "react";
+// import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+// import { scrollTo } from "../utils/scrollTo";
+// import { AnimatePresence, motion } from "framer-motion";
+// import { baseUrl } from "../utils/baseUrl";
+
+// export default function Courses() {
+//   const [active, setActive] = useState("offline");
+//   // Changed to store the category object or "All"
+//   const [activeSubCategory, setActiveSubCategory] = useState("All");
+//   const [currentPage, setCurrentPage] = useState(0);
+//   const [cardsPerPage, setCardsPerPage] = useState(3);
+//   const [allCourses, setAllCourses] = useState([]);
+
+//   useEffect(() => {
+//     const fetchAllCourses = async () => {
+//       try {
+//         const response = await fetch(`${baseUrl}/course`, {
+//           method: "GET",
+//           headers: { "Content-Type": "application/json" },
+//         });
+
+//         if (response.ok) {
+//           const data = await response.json();
+//           setAllCourses(data.data);
+//         }
+//       } catch (err) {
+//         console.error("Error while fetching courses:", err);
+//       }
+//     };
+//     fetchAllCourses();
+//   }, []);
+
+//   useEffect(() => {
+//     const updateCardsPerPage = () => {
+//       if (window.innerWidth < 768) setCardsPerPage(1);
+//       else if (window.innerWidth < 1024) setCardsPerPage(2);
+//       else setCardsPerPage(3);
+//     };
+//     updateCardsPerPage();
+//     window.addEventListener("resize", updateCardsPerPage);
+//     return () => window.removeEventListener("resize", updateCardsPerPage);
+//   }, []);
+
+//   const filteredCourses = allCourses.filter((course) => {
+//     const typeMatch = active === "offline";
+
+//     const categoryMatch =
+//       activeSubCategory === "All" ||
+//       course.category?._id === activeSubCategory._id;
+
+//     return typeMatch && categoryMatch;
+//   });
+
+//   const isSlider = filteredCourses.length > cardsPerPage;
+//   const totalPages = Math.ceil(filteredCourses.length / cardsPerPage);
+
+//   const safePage = currentPage >= totalPages ? 0 : currentPage;
+
+//   const visibleCourses = isSlider
+//     ? filteredCourses.slice(
+//         safePage * cardsPerPage,
+//         safePage * cardsPerPage + cardsPerPage,
+//       )
+//     : filteredCourses;
+
+//   const nextPage = () => setCurrentPage((prev) => (prev + 1) % totalPages);
+//   const prevPage = () =>
+//     setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+
+//   return (
+//     <section className="w-full" id="courses">
+//       <div className="sm:text-center mx-4 mb-5 sm:mb-10 mt-20 sm:mt-30">
+//         <p className="text-secondary uppercase tracking-widest text-[10px] sm:text-xs font-bold">
+//           Explore & Enroll
+//         </p>
+//         <h2 className="text-primary text-3xl md:text-5xl font-bold sm:mb-4 tracking-tight">
+//           Featured <span className="text-secondary ">Courses</span>
+//         </h2>
+//         <p className="sm:block hidden text-secondary capitalize tracking-tight text-sm sm:text-lg px-3 sm:max-w-2xl text-center mx-auto">
+//           Our globally recognized curriculum and career-focused approach help
+//           students master beauty skills and confidently step into the
+//           professional industry.
+//         </p>
+//       </div>
+
+//       <div className="border border-primary grid grid-cols-2 mx-auto h-10 font-bold text-primary sm:text-sm text-xs overflow-hidden max-w-md sm:rounded-3xl">
+//         <button
+//           className={`${active === "offline" ? "bg-primary text-light" : "bg-transparent"} w-full sm:rounded-l-3xl rounded-none transition-all duration-300`}
+//           onClick={() => {
+//             setActive("offline");
+//             setCurrentPage(0);
+//           }}
+//         >
+//           Offline Courses
+//         </button>
+//         <button
+//           className={`${active === "online" ? "bg-primary text-light" : "bg-transparent"} w-full sm:rounded-r-3xl rounded-none transition-all duration-300`}
+//           onClick={() => {
+//             setActive("online");
+//             setCurrentPage(0);
+//           }}
+//         >
+//           Online Courses
+//         </button>
+//       </div>
+
+//       <CourseCategories
+//         activeCategory={activeSubCategory}
+//         setCategory={(cat) => {
+//           setActiveSubCategory(cat);
+//           setCurrentPage(0);
+//         }}
+//       />
+
+//       <div className="my-10"></div>
+
+//       {isSlider && (
+//         <div className="flex justify-end gap-3 px-2 sm:px-0 sm:mr-30 mr-0 mb-4">
+//           <button
+//             onClick={prevPage}
+//             className="p-2 border border-primary rounded-full hover:bg-primary transition-all group"
+//           >
+//             <ChevronLeft
+//               size={18}
+//               className="text-primary group-hover:text-light"
+//             />
+//           </button>
+//           <button
+//             onClick={nextPage}
+//             className="p-2 border border-primary rounded-full hover:bg-primary transition-all group"
+//           >
+//             <ChevronRight
+//               size={18}
+//               className="text-primary group-hover:text-light"
+//             />
+//           </button>
+//         </div>
+//       )}
+
+//       <div className="px-2 sm:px-7 lg:px-10 xl:px-30 py-10 w-full">
+//         {active === "offline" ? (
+//           <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-7 lg:gap-10 place-items-center md:place-items-start gap-10">
+//             <AnimatePresence mode="wait">
+//               {visibleCourses.map((course, index) => (
+//                 <motion.div
+//                   initial={{ opacity: 0 }}
+//                   animate={{ opacity: 1 }}
+//                   exit={{ opacity: 0, scale: 0.95 }}
+//                   transition={{ duration: 0.4, delay: index * 0.1 }}
+//                   key={course._id}
+//                   className="group bg-white flex flex-col rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-secondary h-full w-full"
+//                 >
+//                   <div className="relative h-64 w-full overflow-hidden group">
+//                     <img
+//                       src={course.thumbnail || "/assets/images/bg-img.jpg"}
+//                       alt={course.title}
+//                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+//                     />
+//                     <div className="absolute top-5 left-5 px-4 py-1.5 bg-secondary backdrop-blur-md border border-white/30 rounded-full flex flex-row justify-center items-center">
+//                       <span className="text-light text-[10px] font-bold uppercase tracking-[0.2em]">
+//                         {course.category?.name}
+//                       </span>
+//                     </div>
+//                     {course.level && (
+//                       <span
+//                         className={`absolute bottom-0 right-0 px-5 py-1.5 rounded-tl-full text-xs font-semibold uppercase transition-all duration-500 ease-out opacity-0  translate-y-4 group-hover:opacity-100  group-hover:translate-y-0 ${course.level.toLowerCase() === "beginner" ? "text-green-700 bg-green-100" : course.level.toLowerCase() === "intermediate" ? "text-orange-700 bg-orange-100" : "text-red-700 bg-red-100"} `}
+//                       >
+//                         {course.level}
+//                       </span>
+//                     )}
+//                   </div>
+
+//                   <div className="w-full flex flex-col grow p-6 lg:px-4">
+//                     {/* <div className="flex justify-between items-center mb-4">
+//                       <div className="flex items-center gap-1">
+//                         {[...Array(5)].map((_, j) => (
+//                           <Star
+//                             key={j}
+//                             size={14}
+//                             className="fill-amber-500 text-amber-500"
+//                           />
+//                         ))}
+//                         <span className="text-xs font-bold text-secondary ml-1">
+//                           (5.0)
+//                         </span>
+//                       </div>
+//                     </div> */}
+
+//                     <div className="space-y-3 mb-3">
+//                       <h2 className="font-bold text-xl text-primary tracking-tight leading-tight group-hover:text-secondary transition-colors">
+//                         {course.title}
+//                       </h2>
+//                       <p className="text-sm text-secondary/70 leading-relaxed line-clamp-2">
+//                         {course.short_description}
+//                       </p>
+//                     </div>
+//                     <ul className="space-y-3 mb-3 grow">
+//                       {course.description
+//                         .replace(/<\/?(p|strong)>/g, "")
+//                         .trim()
+//                         .split(".")
+//                         .filter((sum) => sum.trim() !== "")
+//                         .map((sum) => (
+//                           <li
+//                             key={sum}
+//                             className="text-[13px] text-primary font-medium flex items-start gap-3"
+//                           >
+//                             <div className="mt-1 w-4 h-4 rounded-full bg-accent flex items-center justify-center shrink-0">
+//                               <div className="w-1.5 h-1.5 bg-secondary rounded-full" />
+//                             </div>
+//                             {sum}
+//                           </li>
+//                         ))}
+//                     </ul>
+
+//                     <div className="w-full space-y-2 mb-3 text-sm text-secondary font-medium mt-auto flex flex-row justify-between items-center">
+//                       {course.price && (
+//                         <div className="flex items-baseline gap-2">
+//                           <span className="text-lg font-bold text-primary">
+//                             ₹{course.sale_price.toLocaleString()}
+//                           </span>
+//                           <span className="line-through text-xs text-secondary/60">
+//                             ₹{course.price.toLocaleString()}
+//                           </span>
+//                         </div>
+//                       )}
+//                       {course.duration && (
+//                         <p className="tracking-[0.2rem] font-bold">
+//                           {course.duration.toLowerCase().replace("weeks", "")}{" "}
+//                           weeks
+//                         </p>
+//                       )}
+//                     </div>
+
+//                     <button
+//                       className="relative w-full overflow-hidden bg-primary text-light py-3 rounded-xl font-bold transition-all hover:bg-secondary group/btn"
+//                       onClick={() => scrollTo("contact")}
+//                     >
+//                       <span className="flex items-center justify-center gap-2">
+//                         Enroll Now{" "}
+//                         <ArrowRight
+//                           size={18}
+//                           className="group-hover/btn:translate-x-1 transition-transform"
+//                         />
+//                       </span>
+//                     </button>
+//                   </div>
+//                 </motion.div>
+//               ))}
+//             </AnimatePresence>
+//             {visibleCourses.length === 0 && (
+//               <p className="col-span-full mx-auto text-center text-secondary py-10">
+//                 No courses found in this category.
+//               </p>
+//             )}
+//           </div>
+//         ) : (
+//           <div className="w-full p-10 flex justify-center items-center">
+//             <h2 className="text-2xl font-semibold text-primary text-center">
+//               Online Courses{" "}
+//               <span className="text-secondary">Coming Soon!</span>
+//             </h2>
+//           </div>
+//         )}
+//       </div>
+//     </section>
+//   );
+// }
+
+// const CourseCategories = ({ activeCategory, setCategory }) => {
+//   const [allCategories, setAllCategories] = useState([]);
+
+//   useEffect(() => {
+//     const fetchAllCategories = async () => {
+//       try {
+//         const response = await fetch(`${baseUrl}/categories/public`);
+//         if (response.ok) {
+//           const data = await response.json();
+//           // Prepend "All" option to the fetched list
+//           setAllCategories([{ _id: "all", name: "All" }, ...data.data]);
+//         }
+//       } catch (err) {
+//         console.error("Error fetching categories:", err);
+//       }
+//     };
+//     fetchAllCategories();
+//   }, []);
+
+//   return (
+//     <section className="w-full h-16 overflow-x-auto no-scrollbar flex justify-start min-[430px]:justify-center items-center gap-2 md:gap-4 px-4 border-b border-primary/10">
+//       {allCategories.map((cat) => {
+//         const isActive =
+//           activeCategory === "All"
+//             ? cat.name === "All"
+//             : activeCategory._id === cat._id;
+
+//         return (
+//           <button
+//             onClick={() => setCategory(cat.name === "All" ? "All" : cat)}
+//             key={cat._id}
+//             className={`px-6 py-1 rounded-full font-bold transition-all duration-300 whitespace-nowrap ${
+//               isActive
+//                 ? "bg-accent text-primary shadow-md"
+//                 : "text-secondary hover:text-primary"
+//             }`}
+//           >
+//             <span className="sm:text-sm text-xs capitalize">{cat.name}</span>
+//           </button>
+//         );
+//       })}
+//     </section>
+//   );
+// };
 
 // import { useState, useEffect } from "react";
 // import { courses } from "../seeds/courses";
