@@ -64,6 +64,7 @@ const locations = [
   { value: "dehradun", label: "Dehradun" },
   { value: "bajpur", label: "Bajpur" },
   { value: "rudrapur", label: "Rudrapur" },
+  // { value: "moradabad", label: "Moradabad" },
 ];
 
 const features = [

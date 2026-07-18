@@ -7,7 +7,7 @@ const AdmissionsCTA = () => {
     <section className="relative py-24 px-6 bg-light overflow-hidden flex flex-col items-center justify-center">
       {/* Large Background Decorative Text */}
       <div className="sm:block hidden absolute top-30 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none">
-        <h2 className="text-[9.3rem] font-bold text-secondary opacity-10 whitespace-nowrap uppercase tracking-tighter">
+        <h2 className="text-[7rem] md:text-[9rem] font-bold text-secondary opacity-10 whitespace-nowrap uppercase tracking-tighter">
           Rudrapur
         </h2>
       </div>
