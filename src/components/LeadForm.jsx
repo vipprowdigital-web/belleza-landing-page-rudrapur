@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Pin, Phone, Link } from "lucide-react";
-import { baseUrl } from "../utils/baseUrl";
+import { baseUrl, subDomain } from "../utils/baseUrl";
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
 const courses = [
@@ -187,8 +187,9 @@ const LeadForm = ({ address, phone, email }) => {
     }
     setStatus("loading");
     try {
+      formData.append("subdomain", subDomain);
       console.log("Form Data: ", formData);
-      const response = await fetch(`${baseUrl}/contact`, {
+      const response = await fetch(`${baseUrl}/contact/frontend`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

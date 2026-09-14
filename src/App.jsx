@@ -21,7 +21,7 @@ import Navbar from "./components/Navbar";
 import Courses from "./components/Courses";
 import CareerJourney from "./components/CareerJourney";
 import RudrapurLaunch from "./components/RudrapurLaunch";
-import { baseUrl } from "./utils/baseUrl";
+import { baseUrl, subDomain } from "./utils/baseUrl";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
     const fetchAppConfig = async () => {
       try {
-        const response = await fetch(`${baseUrl}/app-config/public`, {
+        const response = await fetch(`${baseUrl}/app-config/frontend?subdomain=${subDomain}`, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });
@@ -42,10 +42,10 @@ function App() {
           // console.log("Response DATA: ", data.data);
           setAppConfig(data.data);
         } else {
-          console.error("Couldn't fetch testimonies.");
+          console.error("Couldn't fetch app config.");
         }
       } catch {
-        console.error("Error while fetching testimonials.");
+        console.error("Error while fetching app configurations.");
       }
     };
     fetchAppConfig();
@@ -54,7 +54,7 @@ function App() {
   useEffect(() => {
     const fetchGalleryImages = async () => {
       try {
-        const response = await fetch(`${baseUrl}/gallery/active`, {
+        const response = await fetch(`${baseUrl}/gallery/frontend?subdomain=${subDomain}`, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });

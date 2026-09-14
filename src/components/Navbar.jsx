@@ -16,7 +16,7 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#" },
+    { name: "Home", href: "https://bellezaschool.com/" },
     { name: "Courses", href: "#courses" },
     { name: "Career", href: "#career" },
     { name: "Experience", href: "#testimony" },

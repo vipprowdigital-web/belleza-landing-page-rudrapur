@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Quote, UserCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
-import { baseUrl } from "../utils/baseUrl";
+import { baseUrl, subDomain } from "../utils/baseUrl";
 
 const StudentExperience = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -11,7 +11,7 @@ const StudentExperience = () => {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const response = await fetch(`${baseUrl}/testimonial/public`, {
+        const response = await fetch(`${baseUrl}/testimonial/frontend?subdomain=${subDomain}`, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });
