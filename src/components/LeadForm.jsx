@@ -78,8 +78,9 @@ const initialData = {
   name: "",
   phone: "",
   courseName: "",
-  prefferedLocation: "",
+  preferredLocation: "",
   message: "",
+  subdomain: "",
 };
 
 const groupedCourses = Object.entries(categoryLabel).map(([key, label]) => ({
@@ -181,18 +182,21 @@ const LeadForm = ({ address, phone, email }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate(formData);
+    const submissionData = {...formData, subdomain: subDomain};
+    console.log("validations passed..");
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
     setStatus("loading");
+    console.log("Form Data (outside try): ", submissionData);
     try {
-      formData.append("subdomain", subDomain);
-      console.log("Form Data: ", formData);
+      console.log("Form Data (inside try): ", submissionData);
+      console.log("Form Data (after appending subdomain): ", submissionData);
       const response = await fetch(`${baseUrl}/contact/frontend`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(submissionData),
       });
       console.log("Response: ", response);
 
