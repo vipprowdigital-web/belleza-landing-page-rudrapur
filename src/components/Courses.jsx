@@ -248,7 +248,7 @@ export default function Courses() {
 
                       {/* Pricing & Duration Line */}
                       <div className="w-full space-y-2 mb-3 text-sm text-secondary font-medium mt-auto flex flex-row justify-between items-center">
-                        {course.price && (
+                        {course.price > 0 && (
                           <div className="flex items-baseline gap-2">
                             <span className="text-lg font-bold text-primary">
                               ₹{course.sale_price?.toLocaleString("en-IN")}

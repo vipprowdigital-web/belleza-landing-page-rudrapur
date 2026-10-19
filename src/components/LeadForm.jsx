@@ -1,64 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Pin, Phone, Link } from "lucide-react";
 import { baseUrl, subDomain } from "../utils/baseUrl";
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
-const courses = [
-  { id: 1, name: "Master in Cosmetology", category: "combo" },
-  { id: 2, name: "Diploma in Cosmetology", category: "combo" },
-  { id: 3, name: "Certificate in Cosmetology", category: "combo" },
-  { id: 4, name: "Certificate in Self Grooming", category: "makeup" },
-  {
-    id: 5,
-    name: "Certificate in International Makeup Artistry",
-    category: "makeup",
-  },
-  {
-    id: 6,
-    name: "Certificate in Professional Makeup Artistry",
-    category: "makeup",
-  },
-  { id: 7, name: "Certificate in Makeup Artistry", category: "makeup" },
-  {
-    id: 8,
-    name: "Certificate in International Nail Artistry",
-    category: "nails",
-  },
-  {
-    id: 9,
-    name: "Certificate in Professional Nail Artistry",
-    category: "nails",
-  },
-  { id: 10, name: "Certificate in Nail Artistry", category: "nails" },
-  { id: 11, name: "Certificate in Permanent Hair Extension", category: "hair" },
-  { id: 12, name: "Certificate in Barbering", category: "hair" },
-  {
-    id: 13,
-    name: "Certificate in International Hair Styling",
-    category: "hair",
-  },
-  { id: 14, name: "Certificate in Hair Styling", category: "hair" },
-  {
-    id: 15,
-    name: "Certificate in Professional Hair Craftsmanship",
-    category: "hair",
-  },
-  { id: 16, name: "Certificate in Hair Craftsmanship", category: "hair" },
-  { id: 17, name: "Certificate in Eye Lashes Extension", category: "beauty" },
-  { id: 18, name: "Certificate in Aesthetician", category: "beauty" },
-  { id: 19, name: "Certificate in Beauty Therapist", category: "beauty" },
-  { id: 20, name: "Certificate in Skincare", category: "beauty" },
-];
-
-const categoryLabel = {
-  combo: "✦ Combo & Cosmetology",
-  makeup: "✦ Makeup",
-  nails: "✦ Nail Artistry",
-  hair: "✦ Hair",
-  beauty: "✦ Beauty & Skin",
-};
-
 const locations = [
   { value: "haldwani", label: "Haldwani" },
   { value: "dehradun", label: "Dehradun" },
@@ -77,16 +22,11 @@ const features = [
 const initialData = {
   name: "",
   phone: "",
-  courseName: "",
+  course: "",
   preferredLocation: "",
   message: "",
   subdomain: "",
 };
-
-const groupedCourses = Object.entries(categoryLabel).map(([key, label]) => ({
-  label,
-  options: courses.filter((c) => c.category === key),
-}));
 
 // ─── Validation ────────────────────────────────────────────────────────────────
 const validate = (data) => {
@@ -96,7 +36,7 @@ const validate = (data) => {
   if (!data.phone.trim()) errors.phone = "Phone number is required";
   else if (!/^[+]?[\d\s-]{8,15}$/.test(data.phone.trim()))
     errors.phone = "Enter a valid phone number";
-  if (!data.courseName) errors.courseName = "Please select a course";
+  if (!data.course) errors.course = "Please select a course";
   if (!data.preferredLocation)
     errors.preferredLocation = "Please select a location";
   return errors;
@@ -157,6 +97,23 @@ const LeadForm = ({ address, phone, email }) => {
   const [formData, setFormData] = useState(initialData);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    (async () => {
+      try {
+        const res = await fetch(`${baseUrl}/course/public/name`, {
+          signal: controller.signal,
+        });
+        const json = await res.json();
+        if (res.ok && Array.isArray(json.data)) setCourses(json.data);
+      } catch {
+        // dropdown stays empty if the request fails
+      }
+    })();
+    return () => controller.abort();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -183,22 +140,22 @@ const LeadForm = ({ address, phone, email }) => {
     e.preventDefault();
     const validationErrors = validate(formData);
     const submissionData = {...formData, subdomain: subDomain};
-    console.log("validations passed..");
+    // console.log("validations passed..");
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
     setStatus("loading");
-    console.log("Form Data (outside try): ", submissionData);
+    // console.log("Form Data (outside try): ", submissionData);
     try {
-      console.log("Form Data (inside try): ", submissionData);
-      console.log("Form Data (after appending subdomain): ", submissionData);
+      // console.log("Form Data (inside try): ", submissionData);
+      // console.log("Form Data (after appending subdomain): ", submissionData);
       const response = await fetch(`${baseUrl}/contact/frontend`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(submissionData),
       });
-      console.log("Response: ", response);
+      // console.log("Response: ", response);
 
       if (response.ok) {
         setStatus("success");
@@ -400,15 +357,15 @@ const LeadForm = ({ address, phone, email }) => {
                 >
                   <FieldLabel
                     label="Interested Course"
-                    error={errors.courseName}
+                    error={errors.course}
                   />
                   <div className="relative">
                     <select
-                      name="courseName"
-                      value={formData.courseName}
+                      name="course"
+                      value={formData.course}
                       onChange={handleChange}
-                      className={`${inputCls(!!errors.courseName)} cursor-pointer appearance-none pr-10 ${
-                        !formData.courseName
+                      className={`${inputCls(!!errors.course)} cursor-pointer appearance-none pr-10 ${
+                        !formData.course
                           ? "text-secondary"
                           : "text-stone-900"
                       }`}
@@ -416,21 +373,17 @@ const LeadForm = ({ address, phone, email }) => {
                       <option value="" disabled>
                         Select a Course
                       </option>
-                      {groupedCourses.map(({ label, options }) => (
-                        <optgroup key={label} label={label}>
-                          {options.map((c) => (
-                            <option key={c.id} value={c.name}>
-                              {c.name}
-                            </option>
-                          ))}
-                        </optgroup>
+                      {courses.map((c) => (
+                        <option key={c._id} value={c._id}>
+                          {c.title}
+                        </option>
                       ))}
                     </select>
                     <span className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-[9px] text-secondary">
                       ▼
                     </span>
                   </div>
-                  <ErrorMsg error={errors.courseName} />
+                  <ErrorMsg error={errors.course} />
                 </motion.div>
 
                 {/* Location */}
